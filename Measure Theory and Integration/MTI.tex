@@ -1,0 +1,122 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+% thanks tyler
+
+\author{jdRanda}
+\title{Measure Theory and Integration}
+
+\begin{document}
+
+    \maketitle
+    \newpage
+    \section{The Riemann Integral}
+        \subsection{Definition}
+            Let $f:[a,b] \to  \mathbb{R}$ s.t. $a<b$ and let $P=\{x_{0},\dots,x_{n}\}$ be a partition of $[a,b]$ with $a=x_{0}<x_{1}<\dots<x_{n}=b$. Set
+            $$ L(P,f)= \sum_{i=1}^{n}\inf \{f(x):x_{i-1}\leq x < x_{i}\}(x_{i}-x_{i-1})$$
+            $$ U(P,f)= \sum_{i=1}^{n}\sup \{f(x):x_{i-1}\leq x < x_{i}\}(x_{i}-x_{i-1})$$
+            as the lower and upper integral sums respectivly. \\
+            Then f is integrable iff
+            $$ \sup_{P}L(P,f) = \inf_{P}U(P,f) $$
+            where the supremum and infinum are taken over all possible partitions.\\
+            Hence the Rieman Integral is
+            $$ \int_{a}^{b}f(x)dx=\sup_{P}L(P,f) = \inf_{P}U(P,f)$$
+        \subsection{Lemma}
+            Let $a,b\in \mathbb{R}$ s.t. $a<b$, $f:[a,b]\to \mathbb{R}$ a function. Then
+            $$ \inf_{P}U(P,f) \geq \sup_{P}L(P,f) $$
+            \underline{Proof}\\
+            Let $P_{1},P_{2}$ be partitions, define $\mathbb{Q}=P_{1} \cap P_{2}$. Since $Q$ is a 'finer' partition than both $P_{1}$ and $P_{2}$, it is clear
+            $$ L(P_{1},f) \leq L(Q,f) \text{and } U(P_{2},f) \geq U(Q,f)$$
+            Therefore
+            $$ L(P_{1},f) \leq L(Q,f) \leq U(Q,f) \leq U(P_{2},f) $$
+            Now as $P_{1},P_{2}$ are arbitrary, the equality is true for all $P$, so we can take the supremum of the LHS over all partitions, and the infinum of the RHS over all partitions, leaving us with...
+            $$ \inf_{P}U(P,f) \geq \sup_{P}L(P,f)$$\qed
+        \subsection{Theorem}
+            A function $f:[a,b] \to  \mathbb{R}$ is \emph{Riemann Integrable} $\iff \forall \epsilon>0, \exists P_{*}$ s.t.
+            $$ U(P_{*},f)-L(P_{*},f)<\epsilon$$
+            Where $P_{*}$ is any partition on $[a.b]$\\
+            \underline{Proof}\\
+            Assume $ \forall \epsilon>0, \exists P_{*} \text{ s.t. }  U(P_{*},f)-L(P_{*},f)<\epsilon$, wts $f$ is Riemann Integrable.\\
+            It is clear
+            $$ \inf_{P}U(P,f)\leq U(P_{*},f) \text{ and } \sup_{P}L(P,f)\geq L(P_{*},f)$$
+            Now by subtracting and using lemma 1.2 we obtain
+            $$ 0\leq  \inf_{P}U(P,f)-\sup_{P}L(P,f) \leq U(P_{*},f)- L(P_{*},f) < \epsilon$$
+            Since $\epsilon$ arbitrary take $\epsilon\to\infty$ and thus
+            $$ \sup_{P}L(P,f) = \inf_{P}U(P,f) $$
+            which is the definition of Riemann Integrability\\\\
+            Now Assume $f$ is Riemann Integrable,\\
+            Let $\epsilon>0$, then $\exists P_{1},P_{2}$ s.t
+            $$U(P_{1},f) < \inf_{P}U(P,f) + \frac{\epsilon}{2} \text{ and } L(P_{2},f) > \sup_{P}L(P,f) + \frac{\epsilon}{2}$$
+            Define $P_{*}=P_{1}\cup P_{2}$ and obtain
+            \begin{align*}
+                 U(P_{*},f)-L(P_{*},f) &\leq U(P_{1},f) - L(P_{2},f)\\
+                &< \inf_{P}U(P,f)-\sup_{P}L(P,f)+\epsilon \\
+                &= \epsilon
+            \end{align*}
+            \qed
+        \subsection{Theorem}
+            $f:[a,b] \to  \mathbb{R}$ is Riemann Integrable iff the set of discontinuities of $f$ has \emph{Lebasque Measure Zero}.
+        \subsection{Definition}
+            The Lebasque Measure of an open interval $I=(a,b)$ is $\mu(I)=b-a$.\\
+            A set $N\subset \mathbb{R}$ has Lebasque Measure Zero if $\forall \epsilon > 0$ there exists a countable collection of open intervals $\{I_{1},I_{2},\dots\}$ s.t. $ N\subset \cup_{i=1}^{\infty}I_{i}$ and $\sum_{i=1}^{\infty}\mu(I_{i})<\epsilon$
+            \subsubsection{Examples}
+                Some examples of sets with a Lebasque Measure of Zero:
+                \begin{itemize}
+                    \item[-] A single point $\{a\}$
+                    \item[-] Any countable set of points $E=\{a_{1},\dots\}$
+                    \item[-] Any countable union of sets of measure $0$
+                    \item[-] Any subset of a set of measure $0$
+                \end{itemize}
+
+    \newpage
+    \section{Measurable sets and Integrals}
+        \subsection{Definition}
+            Let $X\neq\emptyset$ be a set. A family  $\mathbb{X}$ of subsets $X$ is a $\sigma$-algebra if
+            \begin{itemize}
+                \item[i)] $\emptyset \in  \mathbb{X}$, $X \in \mathbb{X}$
+                \item[ii)] $A\in \mathbb{X} \rightarrow A^{c} \in \mathbb{X}$
+                \item[iii)] $A_{1},A_{2},\dots \in \mathbb{X} \rightarrow \cup_{n=1}^{\infty}A_{n}\in \mathbb{X}$
+            \end{itemize}
+            Now $(X,\mathbb{X})$ is called a \emph{Measurable Space}, and each $S\in\mathbb{X}$ are called \emph{Measurable Sets}.
+        \subsection{Definition}
+            Let $X\neq\emptyset$ and $\mathbb{A}$ be a non-empty collections of subsets of $X$. Let $\mathbb{Y}$ be the collection of all $\sigma$-algebras containing $\mathbb{A}$. Then $\beta(\mathbb{A})=\cap_{\mathbb{X}\in\mathbb{Y}}\mathbb{X}$ is the $\sigma$-algebra generated by $\mathbb{A}$. This is the smallest $\sigma$-algebra generated by $\mathbb{A}$.
+        \subsection{Definition}
+            Let $X=\mathbb{R}$, $\mathbb{A}=\{(a,b):a,b\in\overline{\mathbb{R}},a<b\}$. The $\sigma$-algebras generated by $\mathbb{A}$ is \emph{Borel Algebra}, denoted $\mathbb{B}$. This is the smallest $\sigma$-algebras contianing all open sets. A set $B\in \mathbb{B}$ is a \emph{Borel Set}.
+            \textit{NB: $\overline{\mathbb{R}}=\mathbb{R}\cup \{\pm\infty\}$}
+        \subsection{Definition}
+            Let $(X,\mathbb{X})$ be a measurable space. Then $f:X \to  \mathbb{R}$ is a $\mathbb{X}$-measurable function if for any Borel set $A\in \mathbb{B}$ we have $f^{-1}(A)\in \mathbb{X}$.
+        \subsection{Definition}
+            Let $(X,\mathbb{X})$, $(Y,\mathbb{Y})$ be measurable spaces. Then $f:X \to  Y$ is an $\mathbb{X}$-measurable function if for any set $A\in \mathbb{Y}$ we have $f^{-1}(A)\in \mathbb{X}$.
+        \newpage
+        \subsection{Lemma}
+            A function $f:X \to  \mathbb{R}$ is measurable $ \iff \forall \alpha \in \mathbb{R}$ the set
+            $$ \{x\in X:f(x)<\alpha\} \equiv f^{-1}((-\infty,\alpha))$$
+            is measurable (i.e belongs to $\mathbb{X}$).\\
+            \noindent
+            \underline{Proof}\\
+            Assuming the set is measurable, as $(-\infty,\alpha)\in \mathbb{B}$, then by definition $f^{-1}((-\infty,\alpha))\in \mathbb{X}$\\\\
+            Now assume $f^{-1}((-\infty,\alpha))\in \mathbb{X} \forall \alpha\in \mathbb{R}$, wts  for any Borel set $A\in \mathbb{B}$ we have $f^{-1}(A)\in \mathbb{X}$\\
+            Define $\mathbb{A}$ to be a collection of sets of the form $(-\infty,\alpha) $ with $\alpha \in \mathbb{R}$. Now we can see that sets in $\mathbb{A}$ generate Borel $\sigma$-algebra $\mathbb{B}$.\\
+            Let $\mathbb{Y}$ be the smallests $\sigma$-algebra contianing $\mathbb{A}$. Obviously $\mathbb{A}\subset \mathbb{B}$ and therefore $\mathbb{Y}=\beta(\mathbb{A})\subset \mathbb{B}$.\\
+            Now wts $\mathbb{Y}$ contians intervals $(a,b)$ for $a<b\in \mathbb{R}$. Take the sets $(-\infty,a),(-\infty,b) \in \mathbb{Y}$. Then we have
+            $$ [a,b)=(-\infty,b)\cap (-\infty,a)^{c}\in \mathbb{Y} \forall a<b\in \mathbb{R}$$
+            $$(a,b)=\cup_{n=N}^{\infty}[a- \frac{1}{n},b] \text{ for large enough N}$$
+            and hence $(a,b)\in \mathbb{Y}$.\\
+            Since $\mathbb{B}$ is the smallest $\sigma$-algebra contianing all open intervals $(a,b)$ we have $\mathbb{Y}=\mathbb{B}$.\\
+            Now we define the smallest $\sigma$-algebra contianing sets $f^{-1}(\mathbb{A})$, i.e. $\beta(f^{-1}(\mathbb{A}))$. Since $f^{-1}(\mathbb{A})\subset \mathbb{X}$ we also have $\beta (f^{-1} (\mathbb{A})) \subset \mathbb{X}$.\\
+            But $\beta(f^{-1}(\mathbb{A})) = f^{-1}(\beta(\mathbb{A} )) = f^{-1}(\mathbb{B}) $ and so $ f^{-1}(\mathbb{B}) \subset \mathbb{X}$ \qed
+        \subsection{Lemma}
+            Let $(X,\mathbb{X})$ be a measurable space, let $f:X \to  \mathbb{R}$. Then the following are equivalent:
+            \begin{itemize}
+                \item[i)] $\forall\alpha\in \mathbb{R}, A_{\alpha}=\{x\inX:f(x)>\alpha\}\in \mathbb{X}$
+                \item[ii)] $\forall\alpha\in \mathbb{R}, B_{\alpha}=\{x\inX:f(x)\leq\alpha\}\in \mathbb{X}$
+                \item[iii)] $\forall\alpha\in \mathbb{R}, C_{\alpha}=\{x\inX:f(x)\geq\alpha\}\in \mathbb{X}$
+                \item[iv)] $\forall\alpha\in \mathbb{R}, D_{\alpha}=\{x\inX:f(x)<\alpha\}\in \mathbb{X}$
+            \end{itemize}
+
+\end{document}
