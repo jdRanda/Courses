@@ -1,0 +1,111 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{jdRanda}
+\title{Lecture 1}
+
+\begin{document}
+    \section{Intrduction}
+        \subsection{Complex Numbers}
+            Defined as $ \mathbb{C} = \{ (x,y):x,y \in \mathbb{R} \} $
+            subject to conditions,  for $(x_{1}, y_{1}), (x_{2}, y_{2}) \in \mathbb{C}$
+            \begin{itemize}
+                \item Addition ($+$):\\
+                $ (x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}+x_{2}, y_{1}+y_{2})$
+                \item Multiplication ($\cdot$):\\ $ (x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}x_{2}-y_{1}y_{2}, x_{2}y_{1}+x_{1}y_{2}) $
+            \end{itemize}
+            $(\mathbb{C},+), (\mathbb{C},\cdot)  $ are albelian groups, with units $(0,0)$ and $(1,0)$ respectivly
+            \subsubsection{Lemma}
+                $(\mathbb{C},+,\cdot) $ is a field with multiplicative inverse
+                $$z \in \mathbb{C} \text{\textbackslash}  \{0,0\}, \quad z^{-1}=(\frac{x}{x^{2}+y^{2}},\frac{-y}{x^{2}+y^{2}})$$\\
+                such that $z*z^{-1}=(1,0)$\\\\
+
+            \noindent We will define as follows:
+            $$ 1:=(1,0),\quad i:=(0,1),\quad 0:=(0,0) $$
+            Allowing us to write complex numbers as
+
+
+        \newpage
+        \subsection{Sequences, Series and Convergence}
+        The space $(\mathbb{C},|.|)$ is a \emph{metric space} which can be identified with $\mathbb{R}^{2}$ with the euclidean distance.
+            \subsubsection{Definition}
+            A sequence $\{z_{n}\}_{n\in \mathbb{N}}$ converges, $\lim_{n\to \infty}z_{n}=w$ iff
+            $$\lim_{n\to \infty}|z_{n}-w|=0 $$
+            Since $\mathbb{R}^{2}$ is complete, so is $\mathbb{C}$. Namely every Cauchy sequence in $\mathbb{C}$ has a limit in $\mathbb{C}$.
+            \subsubsection{Proposition}
+                A sequence $\{z_{n}\}_{n\in \mathbb{N}}$ converges iff
+                $$ \forall\epsilon>0,\exists N>0, \text{s.t. } n,m>N \Rightarrow |z_{n}-z_{m}|<\epsilon$$\\
+                \noindent
+                A series $ \sum_{n=0}^{\infty}z_{n}$ converges iff the sequence of partial sums $(s_{n})$ converges
+                $$\text{where } s_{n}=\sum_{j=0}^{n}z_{j}$$
+                \noindent
+                The series of real numbers $ \sum_{n=0}^{\infty}b_{n}, \text{for } b_{n}\geq 0$ converges if $\lim\sup_{n\to\infty}|b_{n}|^{1/n}<1$ , and diverges to $+\infty$ if $\lim\sup_{n\to\infty}|b_{n}|^{1/n}>1$
+
+            \subsubsection{Theorem}
+                If a series $ \sum_{n=0}^{\infty}z_{n}$ converges absolutely, then it too converges.\\
+                \underline{proof}\\
+                Let $T_{n}=\sum_{j=0}^{n}|z_{j}|,\quad S_{n}=\sum_{j=0}^{n}z_{j}$. Since the series converges absolutley, we know for some $N\in \mathbb{N}$
+                $$|T_{n}-T_{m}|=|a_{n}|+\dots+|a_{m+1}|<\epsilon \text{ for }n>m>N, \epsilon>0$$
+                and by the triangle inequality we can show
+                \begin{align*}
+                    |S_{n}-S_{m}|&=|a_{n}+\dots+a_{m+1}|\\
+                    &\leq |a_{n}|+\dots+|a_{m+1}| \\
+                    &=|T_{n}-T_{m}|< \epsilon
+                \end{align*}
+                 Hence the sequence $(S_{n})$ is cauchy and must converge\qed
+        \newpage
+        \section{Holomorphic Functions}
+            \subsection{Differentiation of Complex functions}
+                \subsubsection{Definition}
+                    A subset $G\subset \mathbb{C}$ is called a \emph{domain} if it is open and connected.
+                \subsubsection{Definition}
+                    A function $f:G \to  \mathbb{C}$ has a limit $c$ at a point $z_{0}\in G$ if
+                    $$\forall\epsilon>0,\exists\delta>0\text{ s.t. } |z-z_{0}|<\delta \Rightarrow |f(z)-c|<\epsilon$$
+                \subsubsection{Definition}
+                    The function $f$ is continuous at a point $Z_{0}\in G$ if the limit of $f$ at $Z_{0}$ exists and
+                    $$ \lim_{z\to z_{0}}f(z)=f(z_{0})$$
+                    If $f$ is continuous at every point $z\in G$ then f is continuous in $G$.\\\\
+                    We use the notation
+                    $$z = x+iy,\quad f(z)=u(x,y)+iv(x,y) $$
+                    Where $u(x,y),v(x,y)$ are functions from $\mathbb{R}^{2}\to \mathbb{R}$. From this we can write
+                    $$ Re(f)=u,\quad Im(f)=v$$
+                    So we can say $f$ is continious in $G$ if $u,v$ are continious in $G$.
+                \subsubsection{Definition}
+                    Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a complex function on $G$. The function $f$ is (complex) differentiable at a point $z_{0}\in G$ iff the limit
+                    $$ f'(z_{0})=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}\quad(h\neq 0, z_{0}+h\in G)$$
+                    exists and is finite.
+                    The limit is independant from the direction in the complex plane in which $h$ tends to zero.
+            \subsection{Basic Properties of Complex Differentiation}
+                Complex differentiability shares several properties with real differentiability. Those being it is linear and obeys the product rule, quotient rule, and chain rule.\\\\
+                Let $G\subset \mathbb{C}$ be an open set and $f:G \to  \mathbb{C}, g:G \to  \mathbb{C}$ complex functions on $G$, with $z_{0}\in G$.
+                \begin{itemize}
+                    \item[i)]  Suppose $f,g$ are differentiable at $z_{0}$ then  $f+g,af,fg (a\in \mathbb{C})$ are also differentiable at said point and
+                    \noindent
+                    $$(f+g)'(z_{0})=f'(z_{0})+g'(z_{0}), (af)'(z_{0})=af'(z_{0}) $$
+                    $$(fg)'(z_{0})= f'(z_{0})g(z_{0})+g'(z_{0})f'(z_{0}) $$
+                    \item[ii)]  Suppose $f,g$ are differentiable at $z_{0}$ and $(g)'(z_{0})\neq 0$. Then $f/g$ is differentiable at the point and
+                    $$(\frac{f}{g})'(z_{0})=\frac{f'(z_{0})g(z_{0})-g'(z_{0})f(z_{0})}{g^{2}(z_{0})} $$
+                    \item[iii)] Suppose $f$ is differentiable at $z_{0}$, then $f$ is continuous at $z_{0}$.\\
+                    \underline{proof}\\
+                    As $f$ is differentiable at $z_{0}$ then we know $\lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}=f'(z_{0}) $ and we wts $ \lim_{z\to z_{0}}f(z)=f(z_{0})$. So
+                    \begin{align*}
+                         \lim_{z\to z_{0}}(f(z)-f(z_{0})) &=  \lim_{z\to z_{0}}(z-z_{0})\frac{(f(z)-f(z_{0}))}{z-z_{0}}\\
+                         &=[\lim_{z\to z_{0}}(z-z_{0})][\lim_{z\to z_{0}}\frac{(f(z)-f(z_{0}))}{z-z_{0}}]\\
+                         &= 0\cdot f'(z_{0}) =0
+                    \end{align*}\qed
+                    \item[iv)] Let $B\subset \mathbb{C}$ also be an open set. Suppose $f$ is differentiable at $z_{0},f(G)\subset B$ and $g:B\to \mathbb{C}$ is differentiable at $f(z_{0})\in B$. Then we can say the composition $g\circ f:G\to \mathbb{C}$ is differentiable at $z_{0}$ and
+                    $$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$
+                    \underline{proof}\\
+
+                    
+                \end{itemize}
+                \subsubsection{Definition}
+                    A function $f:G \to  \mathbb{C}$ defined on a domain $G$ is called \emph{holomorphic} in $G$ if it has a complex derivative at all points in $G$.
+
+\end{document}
