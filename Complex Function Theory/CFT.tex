@@ -68,17 +68,17 @@
                     A function $f:G \to  \mathbb{C}$ has a limit $c$ at a point $z_{0}\in G$ if
                     $$\forall\epsilon>0,\exists\delta>0\text{ s.t. } |z-z_{0}|<\delta \Rightarrow |f(z)-c|<\epsilon$$
                 \subsubsection{Definition}
-                    The function $f$ is continuous at a point $Z_{0}\in G$ if the limit of $f$ at $Z_{0}$ exists and
+                    The function $f$ is continuous at a point $z_{0}\in G$ if the limit of $f$ at $z_{0}$ exists and
                     $$ \lim_{z\to z_{0}}f(z)=f(z_{0})$$
                     If $f$ is continuous at every point $z\in G$ then f is continuous in $G$.\\\\
                     We use the notation
                     $$z = x+iy,\quad f(z)=u(x,y)+iv(x,y) $$
                     Where $u(x,y),v(x,y)$ are functions from $\mathbb{R}^{2}\to \mathbb{R}$. From this we can write
                     $$ Re(f)=u,\quad Im(f)=v$$
-                    So we can say $f$ is continious in $G$ if $u,v$ are continious in $G$.
+                    So we can say $f$ is continious in $G \iff u,v$ are continious in $G$.
                 \subsubsection{Definition}
                     Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a complex function on $G$. The function $f$ is (complex) differentiable at a point $z_{0}\in G$ iff the limit
-                    $$ f'(z_{0})=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}\quad(h\neq 0, z_{0}+h\in G)$$
+                    $$ f'(z_{0})=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}\quad[= \lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}]$$
                     exists and is finite.
                     The limit is independant from the direction in the complex plane in which $h$ tends to zero.
             \subsection{Basic Properties of Complex Differentiation}
@@ -98,14 +98,79 @@
                          \lim_{z\to z_{0}}(f(z)-f(z_{0})) &=  \lim_{z\to z_{0}}(z-z_{0})\frac{(f(z)-f(z_{0}))}{z-z_{0}}\\
                          &=[\lim_{z\to z_{0}}(z-z_{0})][\lim_{z\to z_{0}}\frac{(f(z)-f(z_{0}))}{z-z_{0}}]\\
                          &= 0\cdot f'(z_{0}) =0
-                    \end{align*}\qed
+                    \end{align*}\qed\newpage
                     \item[iv)] Let $B\subset \mathbb{C}$ also be an open set. Suppose $f$ is differentiable at $z_{0},f(G)\subset B$ and $g:B\to \mathbb{C}$ is differentiable at $f(z_{0})\in B$. Then we can say the composition $g\circ f:G\to \mathbb{C}$ is differentiable at $z_{0}$ and
                     $$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$
                     \underline{proof}\\
+                    We know $g,f$ are differentiable at $z_{0}, f(z_{0})$ respectivly. Thus we can write
+                    $$\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}=f'(z_{0}),\quad \lim_{h\to0}\frac{g(f(z_{0})+h))-g(f(z_{0}))}{h} =g'(f(z_{0}))$$
+                    Now lets define
+                    $$v:= \frac{f(z_{0}+h)-f(z_{0})}{h}-f'(z_{0}), \quad
+                    u:=\frac{g(f(z_{0})+h))-g(f(z_{0}))}{h} -g'(f(z_{0}))$$
+                    This allows us to write
+                    $$f(z_{0}+h)=f(z_{0})+[f'(z_{0})+v]h,\quad g(f(z_{0})+k)=g(f(z_{0}))+[g'(f(z_{0}))+u]k $$
+                    So we can say
+                    $$g(f(z_{0}+h))= g(f(z_{0})+[f'(z_{0})+v]h)$$
+                    and then
+                    \begin{align*}
+                        \frac{g(f(z_{0}+h))-g(f(z_{0}))}{h} &= \frac{g(f(z_{0}))+[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\cdot h- g(f(z_{0}))}{h}\\
+                        &=[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\\
+                        \lim_{h\to0}\frac{g(f(z_{0}+h))-g(f(z_{0}))}{h} &=
+                        \lim_{h\to0}[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\\
+                        &=[\lim_{h\to0}g'(f(z_{0}))+\lim_{h\to0}u]\cdot[\lim_{h\to0}f'(z_{0})+\lim_{h\to0}v]\\
+                        &=g'(f(z_{0}))f'(z_{0})
+                    \end{align*}
+                    \textit{as both $u,v\to 0 $ as $h\to 0$.}\\
+                    Hence the limit exists and is finite so we can say $g\circ f$ is differentiable at $z_{0}$ and
+                    $$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$\qed
 
-                    
                 \end{itemize}
                 \subsubsection{Definition}
                     A function $f:G \to  \mathbb{C}$ defined on a domain $G$ is called \emph{holomorphic} in $G$ if it has a complex derivative at all points in $G$.
+            \newpage
+            \subsection{Derivative as a linear approximation}
+                \subsubsection{Definition}
+                    Let $w(z)$ be a complex function in a neighbourhood of $z=0$. The function $w(z)=o(z)$ if
+                    $$\lim_{z\to0}\frac{w(z)}{z}=0$$
+                    $w(z)=O(z)$ if
+                    $$\lim_{z\to0}\frac{w(z)}{z}=c,\quad c\neq 0$$
+                \subsubsection{Lemma}
+                    Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a compelx function on $G$. $f$ is complex differentiable at $z_{0}\in G$ iff there exists a constant $A\in \mathbb{C}$ s.t.
+                    $$ f(z_{0}+h)-f(z_{0})=Ah+o(h),\quad \forall h\in G_{z_{0}}$$
+                    \textit{where $G_{z_{0}}$ is a neighbourhood of $z_{0}$ in $G$ and $A=f'(z_{0})$.}\\
+                    \underline{Proof}\\
+                    Suppose $f$ differentiable at $z_{0}$. Let $A=f'(z_{0})$. Define $w:G_{z_{0}} \to  \mathbb{C};h\to f(z_{0}+h)-f(z_{0})-Ah$. Then
+                    $$\lim_{h\to0}\frac{w(h)}{h}=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})-f'(z_{0})h}{h}=f'(z_{0})-f'(z_{0})=0$$
+                    Hence $w(h)=o(h)$ is satified.\\
+                    Now supppose that $A\in \mathbb{C}, w:G_{z_{0}} \to  \mathbb{C};h\to f(z_{0}+h)-f(z_{0})-Ah=o(h)$. Then
+                    $$ \lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}=\lim_{h\to0}\frac{Ah+w(h)}{h}= A+\lim_{h\to0}\frac{w(h)}{h}=A$$
+                    It follows that $\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}$ exists and $f'(z_{0})=A$.\qed
+            \newpage
+            \subsection{Real versus Complex Differentiation}
+                We consider arbitrary maps of the form
+                $$F:\mathbb{R}^{2}\to \mathbb{R}^{2};(x,y)\to(u(x,y),v(x,y)) $$
+                \subsubsection{Theorem}
+                    The function $F$ is real differentiable at $(x_{0},y_{0})$ if there exists a linear map $A:\mathbb{R}^{2} \to  \mathbb{R}^{2}$ s.t.
+                    $$F(x,y)-F(x_{0},y_{0})=(x-x_{0},y-y_{0})A+o(\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}})$$
+                    \textit{The matrix $A$ is the transpose of the Jacobian of $F$ calculated in $(x_{0},y_{0})$, namely}
+                    $$A^{t}=JF(x_{0},y_{0})=
+                    \begin{pmatrix}
+                            u_{x}(x_{0},y_{0}) & u_{y}(x_{0},y_{0})\\
+                            v_{x}(x_{0},y_{0}) & v_{y}(x_{0},y_{0})
+                    \end{pmatrix}$$
+                    and
+                    $$\lim_{x\to x_{0},y\to y_{o}}\frac{o(\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}})}{\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}}}=0 $$
+
+            \newpage
+            \subsection{Caughy-Riemann Equations}
+                \subsubsection{Cauchy-Riemann Theorem}
+                    Suppose $f:G \to  \mathbb{C};z\to u(x,y)+iv(x,y)$ is complex differentiable in $z_{0}\in G$. Then $u,(x,y)$ and $v(x,y)$ satisfy the following equations:
+                    $$ $$
+
+
+
+
+
+
 
 \end{document}

@@ -12,9 +12,108 @@
 \title{Set Theory}
 
 \begin{document}
-    \maketitle
-    \newpage
-    \section{yes}
+\maketitle
+\newpage
+\section{Introduction}
+\subsubsection*{Axiom of Extensionality (for sets)}
+For two sets $a,b$, we say $a=b$ iff:
+$$ \forall x,[x\in a\Rightarrow x\in b]$$
+\subsubsection*{Axiom of Extensionality (for classes)}
+For two classes $A,B$, we say $A=B$ iff:
+$$ \forall x,[x\in A\Rightarrow x\in B]$$
+\subsubsection*{Axiom of Pair Set}
+For any sets $x,y$ there is a set $z=\{x,y\}$ with elements just $x$ and $y$. $z$ is called the \emph{(unordered) pair set of $x,y$}.
+\textit{NB: If $x=y$ then we have $\{x,y\}=\{x,x\}=\{x\}$}
+\subsection*{Definition 1.1}
+Let $\mathcal{P}(x)$ denote the class $\{y\subset x$, called the \emph{Power set of $x$}.
+\subsection*{Definition 1.2}
+The \emph{Empty Set}, denoted $\emptyset$, is the unique set with no elements.
+\begin{itemize}
+    \item We can define $\emptyset$ as $\{x|x\neq x\}$.
+    \item For any set/class $A$, we have $\emptyset \subset A$.
+\end{itemize}
+
+\newpage
+\section{Classes}
+\subsection*{Theorem 1.4}
+The collection $R=\{x|x\notin x\}$ does not define a set.\\
+\begin{proof}
+    Suppose $R$ was a set $z$. Assume $z\in R$, then by the definition of $R$, $z \notin z$. However if $z \notin R$ then we should have $z \in z$. This is a contradiction.
+\end{proof}
+\textit{NB: This is an example of a class that is not a set. Any class which is not, or cannot be, a set is called a \emph{Proper Class}.}
+\subsubsection*{Axiom of Subsets}
+Let $\Phi(x)$ be a definite, welldefined property. Let $x$ be a set. Then
+$$ \{y\in x|\Phi(y)\}\quad\text{is a set.}$$
+\subsection*{Corollary 1.5}
+Let $V$ denote the class of all sets. Then $V$ is a proper class.
+\begin{proof}
+    If $V$ were a set then we should have, $R=\{y\in V|y\notin y\}$ is a set by the Axiom of Subsets, however we  have just shown R is not a set.
+\end{proof}
+\subsection*{Definition 1.6}
+For any set $Z$ there is a class, $\cup Z$, which consists of the members of members of $Z$.
+$$\cup Z=\{x|\exists t (x\in t\in Z)\}$$
+\subsubsection*{Axiom of Unions}
+For any set $Z$, $\cup Z$ is a set.
+\subsection*{Definition 1.8}
+For any non-empty set $Z$, there is another set, $\cap Z$, which consists of the members of all members of $Z$.
+$$\cap Z=\{x|\forall t\in Z(x\in t)\}$$
+or using index sets we write
+$$x\in \cap_{j\in I}A_{j}\iff (\forall j\in I)(x \in A_{j}) $$
+
+\newpage
+\section{Relations and Functions}
+For two sets $X,Y$, there are relations $R$ that hold between some elements of $X$ and of $Y$, denoted $xRy$. The types of relation are:
+\begin{itemize}
+    \item Reflexive:  $x\in X \Rightarrow xRx$
+    \item Irreflexive:  $x\in X \Rightarrow \neg (xRx)$
+    \item Symmetric:  $(x,y\in X \wedge xRy) \Rightarrow yRx$
+    \item Connected:  $(x,y\in X) \Rightarrow (x=y\vee xRy\vee yRx)$
+    \item Transiative:  $(x,y,z\in X \wedge xRy \wedge yRz) \Rightarrow xRz$
+\end{itemize}
+\textit{NB: recall that an \emph{equivalence relation} is that R should satify symmetry, reflixivity and transiativity.}
+\subsection*{Definition 1.10}
+A relation $\prec$ on a set $X$ is a (strict) partial ordering if it is irreflexitve and transitive. I.e.
+\begin{itemize}
+    \item[i)]$x\in X\Rightarrow \neg (x\prec x)$.
+    \item[ii)] $(x,y,z\in X \wedge x \prec y \wedge y \prec z)\Rightarrow (x\prec z)$
+\end{itemize}
+
+
+\subsection*{Definition 1.11}
+\begin{itemize}
+    \item[i)] If $\prec$ is a partial ordering of a set $X$, and $\emptyset \neq Y \subseteq X$, then $z\in X$ is a lower bound for $Y$ in $X$ if:
+    $$\forall Y(y\in Y\Rightarrow z \preceq y) $$
+    \item[ii)] $z\in X$ is an infimum or greatest lower bound (glb) for $Y$ if it is a lower bound for Y and if $z'$ is a lower bound for $Y$ then $z'\preceq z$.
+    \item[iii)] The concepts of upper bound and supremum (least upper bound (lub)) are defined analogously.
+\end{itemize}
+\subsection*{Definition 1.12}
+\begin{itemize}
+    \item[i)] We say $f:(X,\prec_{1})\to(Y,\prec_{2})$ is an order preserving map of the partial orders $(X,\prec_{1}),(Y,\prec_{2})$ iff:
+    $$\forall x,z\in X (x,\prec_{1}z \Rightarrow f(x),\prec_{2}f(z)) $$
+    \item[ii)] Orderings $(X,\prec_{1}),(Y,\prec_{2})$ are (order) isomorphic, written $(X,\prec_{1})\cong(Y,\prec_{2})$, if there is an order preserving map between them which is also a bijection.
+    \item[iii)] There are completely analogous definitions between nonstrics orders $\preceq_{1}, \preceq_{2}$.
+\end{itemize}
+\subsection*{Theorem 1.13\textit{(Representation Theorem for partially ordered sets)}}
+If $\prec$ partially orders $X$, then there is a set $Y$ of subsets of $X$ which is such that $(X,\preceq)$ is order isomorphic to $(Y,\subseteq)$.
+\begin{proof}
+    Given any $x\in X$, let $X^{x} = \{z\in X|z\preceq x\}$. Notice if $x\neq y$ then $X^{x}\neq X^{y}$. So the assignemnt of $x$ to $X^{x}$ is 1:1. Let $Y = \{X^{x}|x\in X\}$. Then we have
+    $$x\preceq y \iff X^{x}\subseteq X^{y} $$
+    Coonsequently, setting $f(x)=X^{x}$ we have an order isomorphism.
+\end{proof}
+\textit{NB: Often we deal with roderings where every element is  comparable with every other, known as \emph{strong connectivity} and we call the rdering \emph{total}.}
+\subsection*{Definition 1.14}
+A relation $\prec$ on $X$ is a string total ordering if it is a partial ordering which is connected:
+$$\forall x,y (x,y\in X\Rightarrow (x=y\vee x\prec y\vee y\prec x)) $$
+\textit{NB: For $\preceq$ we call the ordering non-strict.}
+\subsection*{Definition 1.15}
+\begin{itemize}
+    \item[i)]$(A,\prec)$ is a wellordering if it is a string total orderings and for any subset $Y\subseteq A$, $Y\neq \emptyset\Rightarrow Y$ has a $\prec$-least element. We write $(A,\prec)\in WO$
+    item[ii)] A partial ordering $R$ on a set $A$, $(A,R)$ is a wellfounded relation if for any subset $Y\subseteq A$, $Y\neq \emptyset\Rightarrow Y$ has an $R$-minimal element.
+\end{itemize}
+
+
+
+
 
 
 \end{document}
