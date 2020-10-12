@@ -8,166 +8,216 @@
 \usepackage{multicol}
 
 \author{jdRanda}
-\title{Lecture 1}
+\title{Complex Function Theorem}
 
 \begin{document}
-    \section{Intrduction}
-        \subsection{Complex Numbers}
-            Defined as $ \mathbb{C} = \{ (x,y):x,y \in \mathbb{R} \} $
-            subject to conditions,  for $(x_{1}, y_{1}), (x_{2}, y_{2}) \in \mathbb{C}$
-            \begin{itemize}
-                \item Addition ($+$):\\
-                $ (x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}+x_{2}, y_{1}+y_{2})$
-                \item Multiplication ($\cdot$):\\ $ (x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}x_{2}-y_{1}y_{2}, x_{2}y_{1}+x_{1}y_{2}) $
-            \end{itemize}
-            $(\mathbb{C},+), (\mathbb{C},\cdot)  $ are albelian groups, with units $(0,0)$ and $(1,0)$ respectivly
-            \subsubsection{Lemma}
-                $(\mathbb{C},+,\cdot) $ is a field with multiplicative inverse
-                $$z \in \mathbb{C} \text{\textbackslash}  \{0,0\}, \quad z^{-1}=(\frac{x}{x^{2}+y^{2}},\frac{-y}{x^{2}+y^{2}})$$\\
-                such that $z*z^{-1}=(1,0)$\\\\
+\maketitle
+\newpage
 
-            \noindent We will define as follows:
-            $$ 1:=(1,0),\quad i:=(0,1),\quad 0:=(0,0) $$
-            Allowing us to write complex numbers as
+\section{Introduction}
+\subsection{Complex Numbers}
+Defined as $ \mathbb{C} = \{ (x,y):x,y \in \mathbb{R} \} $
+subject to conditions,  for $(x_{1}, y_{1}), (x_{2}, y_{2}) \in \mathbb{C}$
+\begin{itemize}
+    \item Addition ($+$):\\
+    $ (x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}+x_{2}, y_{1}+y_{2})$
+    \item Multiplication ($\cdot$):\\ $ (x_{1}, y_{1}) + (x_{2}, y_{2}) = (x_{1}x_{2}-y_{1}y_{2}, x_{2}y_{1}+x_{1}y_{2}) $
+\end{itemize}
+$(\mathbb{C},+), (\mathbb{C},\cdot)  $ are albelian groups, with units $(0,0)$ and $(1,0)$ respectivly
+\subsubsection*{Lemma 1.1}
+$(\mathbb{C},+,\cdot) $ is a field with multiplicative inverse
+$$z \in \mathbb{C} \text{\textbackslash}  \{0,0\}, \quad z^{-1}=(\frac{x}{x^{2}+y^{2}},\frac{-y}{x^{2}+y^{2}})$$\\
+such that $z\cdot z^{-1}=(1,0)$\\\\
+\noindent We will define as follows:
+$$ 1:=(1,0),\quad i:=(0,1),\quad 0:=(0,0) $$
+Allowing us to write complex numbers as
+$$z=1\cdot x+i\cdot y$$
+We also define the real and imaginary parts of complex numbers as
+$$Re(z):=x=\frac{z+\overline{z}}{2},\quad Im(z)=y=\frac{z-\overline{z}}{2i} $$
+The modulo and argument are
+$$|z|=\sqrt{z\overline{z}}=\sqrt{x_{2}+y^{2}} $$
+$$arg(z)=\phi(mod2\pi), \text{ so that }\cos\phi=\frac{Re(z)}{|z|},\sin\phi=\frac{Im(z)}{|z|} $$
+And all z have a polar co-ordiante representation
+$$z=|z|(\cos(arg(z))+i\sin(arg(z))=r(\cos\phi+i\sin\phi) $$
+Then by eulers formula
+$$z=|z|(\cos\phi+i\sin\phi)=|z|e^{i\phi}$$
 
+\newpage
+\subsection{Sequences, Series and Convergence}
+The space $(\mathbb{C},|.|)$ is a \emph{metric space} which can be identified with $\mathbb{R}^{2}$ with the euclidean distance.
+\subsubsection*{Definition 1.5}
+A sequence $\{z_{n}\}_{n\in \mathbb{N}}$ converges, $\lim_{n\to \infty}z_{n}=w$ iff
+$$\lim_{n\to \infty}|z_{n}-w|=0 $$
+Since $\mathbb{R}^{2}$ is complete, so is $\mathbb{C}$. Namely every Cauchy sequence in $\mathbb{C}$ has a limit in $\mathbb{C}$.
+\subsubsection*{Proposition 1.6}
+A sequence $\{z_{n}\}_{n\in \mathbb{N}}$ converges iff
+$$ \forall\epsilon>0,\exists N>0, \text{s.t. } n,m>N \Rightarrow |z_{n}-z_{m}|<\epsilon$$\\
+\noindent
+A series $ \sum_{n=0}^{\infty}z_{n}$ converges iff the sequence of partial sums $(s_{n})$ converges
+$$\text{where } s_{n}=\sum_{j=0}^{n}z_{j}$$
+\noindent
+The series of real numbers $ \sum_{n=0}^{\infty}b_{n}, \text{for } b_{n}\geq 0$ converges if $\lim\sup_{n\to\infty}|b_{n}|^{1/n}<1$ , and diverges to $+\infty$ if $\lim\sup_{n\to\infty}|b_{n}|^{1/n}>1$
+\subsubsection*{Theorem}
+If a series $ \sum_{n=0}^{\infty}z_{n}$ converges absolutely, then it too converges.
+\begin{proof}
+    Let $T_{n}=\sum_{j=0}^{n}|z_{j}|,\quad S_{n}=\sum_{j=0}^{n}z_{j}$. Since the series converges absolutley, we know for some $N\in \mathbb{N}$
+    $$|T_{n}-T_{m}|=|a_{n}|+\dots+|a_{m+1}|<\epsilon \text{ for }n>m>N, \epsilon>0$$
+    and by the triangle inequality we can show
+    \begin{align*}
+        |S_{n}-S_{m}|&=|a_{n}+\dots+a_{m+1}|\\
+        &\leq |a_{n}|+\dots+|a_{m+1}| \\
+        &=|T_{n}-T_{m}|< \epsilon
+    \end{align*}
+    Hence the sequence $(S_{n})$ is cauchy and must converge
+\end{proof}
 
-        \newpage
-        \subsection{Sequences, Series and Convergence}
-        The space $(\mathbb{C},|.|)$ is a \emph{metric space} which can be identified with $\mathbb{R}^{2}$ with the euclidean distance.
-            \subsubsection{Definition}
-            A sequence $\{z_{n}\}_{n\in \mathbb{N}}$ converges, $\lim_{n\to \infty}z_{n}=w$ iff
-            $$\lim_{n\to \infty}|z_{n}-w|=0 $$
-            Since $\mathbb{R}^{2}$ is complete, so is $\mathbb{C}$. Namely every Cauchy sequence in $\mathbb{C}$ has a limit in $\mathbb{C}$.
-            \subsubsection{Proposition}
-                A sequence $\{z_{n}\}_{n\in \mathbb{N}}$ converges iff
-                $$ \forall\epsilon>0,\exists N>0, \text{s.t. } n,m>N \Rightarrow |z_{n}-z_{m}|<\epsilon$$\\
-                \noindent
-                A series $ \sum_{n=0}^{\infty}z_{n}$ converges iff the sequence of partial sums $(s_{n})$ converges
-                $$\text{where } s_{n}=\sum_{j=0}^{n}z_{j}$$
-                \noindent
-                The series of real numbers $ \sum_{n=0}^{\infty}b_{n}, \text{for } b_{n}\geq 0$ converges if $\lim\sup_{n\to\infty}|b_{n}|^{1/n}<1$ , and diverges to $+\infty$ if $\lim\sup_{n\to\infty}|b_{n}|^{1/n}>1$
+\newpage
+\section{Holomorphic Functions}
+\subsection{Differentiation of Complex functions}
+\subsubsection*{Definition 2.1}
+A subset $G\subset \mathbb{C}$ is called a \emph{domain} if it is open and connected.
+\subsubsection*{Definition 2.2}
+A function $f:G \to  \mathbb{C}$ has a limit $c$ at a point $z_{0}\in G$ if
+$$\forall\epsilon>0,\exists\delta>0\text{ s.t. } |z-z_{0}|<\delta \Rightarrow |f(z)-c|<\epsilon$$
+\subsubsection*{Definition 2.3}
+The function $f$ is continuous at a point $z_{0}\in G$ if the limit of $f$ at $z_{0}$ exists and
+$$ \lim_{z\to z_{0}}f(z)=f(z_{0})$$
+If $f$ is continuous at every point $z\in G$ then f is continuous in $G$.\\\\
+We use the notation
+$$z = x+iy,\quad f(z)=u(x,y)+iv(x,y) $$
+Where $u(x,y),v(x,y)$ are functions from $\mathbb{R}^{2}\to \mathbb{R}$. From this we can write
+$$ Re(f)=u,\quad Im(f)=v$$
+So we can say $f$ is continious in $G \iff u,v$ are continious in $G$.
+\subsubsection*{Definition 2.4}
+Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a complex function on $G$. The function $f$ is (complex) differentiable at a point $z_{0}\in G$ iff the limit
+$$ f'(z_{0})=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}\quad[= \lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}]$$
+exists and is finite.
+The limit is independant from the direction in the complex plane in which $h$ tends to zero.
 
-            \subsubsection{Theorem}
-                If a series $ \sum_{n=0}^{\infty}z_{n}$ converges absolutely, then it too converges.\\
-                \underline{proof}\\
-                Let $T_{n}=\sum_{j=0}^{n}|z_{j}|,\quad S_{n}=\sum_{j=0}^{n}z_{j}$. Since the series converges absolutley, we know for some $N\in \mathbb{N}$
-                $$|T_{n}-T_{m}|=|a_{n}|+\dots+|a_{m+1}|<\epsilon \text{ for }n>m>N, \epsilon>0$$
-                and by the triangle inequality we can show
-                \begin{align*}
-                    |S_{n}-S_{m}|&=|a_{n}+\dots+a_{m+1}|\\
-                    &\leq |a_{n}|+\dots+|a_{m+1}| \\
-                    &=|T_{n}-T_{m}|< \epsilon
-                \end{align*}
-                 Hence the sequence $(S_{n})$ is cauchy and must converge\qed
-        \newpage
-        \section{Holomorphic Functions}
-            \subsection{Differentiation of Complex functions}
-                \subsubsection{Definition}
-                    A subset $G\subset \mathbb{C}$ is called a \emph{domain} if it is open and connected.
-                \subsubsection{Definition}
-                    A function $f:G \to  \mathbb{C}$ has a limit $c$ at a point $z_{0}\in G$ if
-                    $$\forall\epsilon>0,\exists\delta>0\text{ s.t. } |z-z_{0}|<\delta \Rightarrow |f(z)-c|<\epsilon$$
-                \subsubsection{Definition}
-                    The function $f$ is continuous at a point $z_{0}\in G$ if the limit of $f$ at $z_{0}$ exists and
-                    $$ \lim_{z\to z_{0}}f(z)=f(z_{0})$$
-                    If $f$ is continuous at every point $z\in G$ then f is continuous in $G$.\\\\
-                    We use the notation
-                    $$z = x+iy,\quad f(z)=u(x,y)+iv(x,y) $$
-                    Where $u(x,y),v(x,y)$ are functions from $\mathbb{R}^{2}\to \mathbb{R}$. From this we can write
-                    $$ Re(f)=u,\quad Im(f)=v$$
-                    So we can say $f$ is continious in $G \iff u,v$ are continious in $G$.
-                \subsubsection{Definition}
-                    Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a complex function on $G$. The function $f$ is (complex) differentiable at a point $z_{0}\in G$ iff the limit
-                    $$ f'(z_{0})=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}\quad[= \lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}]$$
-                    exists and is finite.
-                    The limit is independant from the direction in the complex plane in which $h$ tends to zero.
-            \subsection{Basic Properties of Complex Differentiation}
-                Complex differentiability shares several properties with real differentiability. Those being it is linear and obeys the product rule, quotient rule, and chain rule.\\\\
-                Let $G\subset \mathbb{C}$ be an open set and $f:G \to  \mathbb{C}, g:G \to  \mathbb{C}$ complex functions on $G$, with $z_{0}\in G$.
-                \begin{itemize}
-                    \item[i)]  Suppose $f,g$ are differentiable at $z_{0}$ then  $f+g,af,fg (a\in \mathbb{C})$ are also differentiable at said point and
-                    \noindent
-                    $$(f+g)'(z_{0})=f'(z_{0})+g'(z_{0}), (af)'(z_{0})=af'(z_{0}) $$
-                    $$(fg)'(z_{0})= f'(z_{0})g(z_{0})+g'(z_{0})f'(z_{0}) $$
-                    \item[ii)]  Suppose $f,g$ are differentiable at $z_{0}$ and $(g)'(z_{0})\neq 0$. Then $f/g$ is differentiable at the point and
-                    $$(\frac{f}{g})'(z_{0})=\frac{f'(z_{0})g(z_{0})-g'(z_{0})f(z_{0})}{g^{2}(z_{0})} $$
-                    \item[iii)] Suppose $f$ is differentiable at $z_{0}$, then $f$ is continuous at $z_{0}$.\\
-                    \underline{proof}\\
-                    As $f$ is differentiable at $z_{0}$ then we know $\lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}=f'(z_{0}) $ and we wts $ \lim_{z\to z_{0}}f(z)=f(z_{0})$. So
-                    \begin{align*}
-                         \lim_{z\to z_{0}}(f(z)-f(z_{0})) &=  \lim_{z\to z_{0}}(z-z_{0})\frac{(f(z)-f(z_{0}))}{z-z_{0}}\\
-                         &=[\lim_{z\to z_{0}}(z-z_{0})][\lim_{z\to z_{0}}\frac{(f(z)-f(z_{0}))}{z-z_{0}}]\\
-                         &= 0\cdot f'(z_{0}) =0
-                    \end{align*}\qed\newpage
-                    \item[iv)] Let $B\subset \mathbb{C}$ also be an open set. Suppose $f$ is differentiable at $z_{0},f(G)\subset B$ and $g:B\to \mathbb{C}$ is differentiable at $f(z_{0})\in B$. Then we can say the composition $g\circ f:G\to \mathbb{C}$ is differentiable at $z_{0}$ and
-                    $$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$
-                    \underline{proof}\\
-                    We know $g,f$ are differentiable at $z_{0}, f(z_{0})$ respectivly. Thus we can write
-                    $$\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}=f'(z_{0}),\quad \lim_{h\to0}\frac{g(f(z_{0})+h))-g(f(z_{0}))}{h} =g'(f(z_{0}))$$
-                    Now lets define
-                    $$v:= \frac{f(z_{0}+h)-f(z_{0})}{h}-f'(z_{0}), \quad
-                    u:=\frac{g(f(z_{0})+h))-g(f(z_{0}))}{h} -g'(f(z_{0}))$$
-                    This allows us to write
-                    $$f(z_{0}+h)=f(z_{0})+[f'(z_{0})+v]h,\quad g(f(z_{0})+k)=g(f(z_{0}))+[g'(f(z_{0}))+u]k $$
-                    So we can say
-                    $$g(f(z_{0}+h))= g(f(z_{0})+[f'(z_{0})+v]h)$$
-                    and then
-                    \begin{align*}
-                        \frac{g(f(z_{0}+h))-g(f(z_{0}))}{h} &= \frac{g(f(z_{0}))+[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\cdot h- g(f(z_{0}))}{h}\\
-                        &=[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\\
-                        \lim_{h\to0}\frac{g(f(z_{0}+h))-g(f(z_{0}))}{h} &=
-                        \lim_{h\to0}[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\\
-                        &=[\lim_{h\to0}g'(f(z_{0}))+\lim_{h\to0}u]\cdot[\lim_{h\to0}f'(z_{0})+\lim_{h\to0}v]\\
-                        &=g'(f(z_{0}))f'(z_{0})
-                    \end{align*}
-                    \textit{as both $u,v\to 0 $ as $h\to 0$.}\\
-                    Hence the limit exists and is finite so we can say $g\circ f$ is differentiable at $z_{0}$ and
-                    $$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$\qed
+\newepage
+\subsection{Basic Properties of Complex Differentiation}
+Complex differentiability shares several properties with real differentiability. Those being it is linear and obeys the product rule, quotient rule, and chain rule.\\\\
+Let $G\subset \mathbb{C}$ be an open set and $f:G \to  \mathbb{C}, g:G \to  \mathbb{C}$ complex functions on $G$, with $z_{0}\in G$.
+\begin{itemize}
+\item[i)]  Suppose $f,g$ are differentiable at $z_{0}$ then  $f+g,af,fg (a\in \mathbb{C})$ are also differentiable at said point and
+\noindent
+$$(f+g)'(z_{0})=f'(z_{0})+g'(z_{0}), (af)'(z_{0})=af'(z_{0}) $$
+$$(fg)'(z_{0})= f'(z_{0})g(z_{0})+g'(z_{0})f'(z_{0}) $$
+\item[ii)]  Suppose $f,g$ are differentiable at $z_{0}$ and $(g)'(z_{0})\neq 0$. Then $f/g$ is differentiable at the point and
+$$(\frac{f}{g})'(z_{0})=\frac{f'(z_{0})g(z_{0})-g'(z_{0})f(z_{0})}{g^{2}(z_{0})} $$
+\item[iii)] Suppose $f$ is differentiable at $z_{0}$, then $f$ is continuous at $z_{0}$.\\
+\underline{proof}\\
+As $f$ is differentiable at $z_{0}$ then we know $\lim_{z\to z_{0}}\frac{f(z)-f(z_{0})}{z-z_{0}}=f'(z_{0}) $ and we wts $ \lim_{z\to z_{0}}f(z)=f(z_{0})$. So
+\begin{align*}
+     \lim_{z\to z_{0}}(f(z)-f(z_{0})) &=  \lim_{z\to z_{0}}(z-z_{0})\frac{(f(z)-f(z_{0}))}{z-z_{0}}\\
+     &=[\lim_{z\to z_{0}}(z-z_{0})][\lim_{z\to z_{0}}\frac{(f(z)-f(z_{0}))}{z-z_{0}}]\\
+     &= 0\cdot f'(z_{0}) =0
+\end{align*}\qed\newpage
+\item[iv)] Let $B\subset \mathbb{C}$ also be an open set. Suppose $f$ is differentiable at $z_{0},f(G)\subset B$ and $g:B\to \mathbb{C}$ is differentiable at $f(z_{0})\in B$. Then we can say the composition $g\circ f:G\to \mathbb{C}$ is differentiable at $z_{0}$ and
+$$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$
+\underline{proof}\\
+We know $g,f$ are differentiable at $z_{0}, f(z_{0})$ respectivly. Thus we can write
+$$\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}=f'(z_{0}),\quad \lim_{h\to0}\frac{g(f(z_{0})+h))-g(f(z_{0}))}{h} =g'(f(z_{0}))$$
+Now lets define
+$$v:= \frac{f(z_{0}+h)-f(z_{0})}{h}-f'(z_{0}), \quad
+u:=\frac{g(f(z_{0})+h))-g(f(z_{0}))}{h} -g'(f(z_{0}))$$
+This allows us to write
+$$f(z_{0}+h)=f(z_{0})+[f'(z_{0})+v]h,\quad g(f(z_{0})+k)=g(f(z_{0}))+[g'(f(z_{0}))+u]k $$
+So we can say
+$$g(f(z_{0}+h))= g(f(z_{0})+[f'(z_{0})+v]h)$$
+and then
+\begin{align*}
+    \frac{g(f(z_{0}+h))-g(f(z_{0}))}{h} &= \frac{g(f(z_{0}))+[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\cdot h- g(f(z_{0}))}{h}\\
+    &=[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\\
+    \lim_{h\to0}\frac{g(f(z_{0}+h))-g(f(z_{0}))}{h} &=
+    \lim_{h\to0}[g'(f(z_{0}))+u]\cdot[f'(z_{0})+v]\\
+    &=[\lim_{h\to0}g'(f(z_{0}))+\lim_{h\to0}u]\cdot[\lim_{h\to0}f'(z_{0})+\lim_{h\to0}v]\\
+    &=g'(f(z_{0}))f'(z_{0})
+\end{align*}
+\textit{as both $u,v\to 0 $ as $h\to 0$.}\\
+Hence the limit exists and is finite so we can say $g\circ f$ is differentiable at $z_{0}$ and
+$$(g(f))'(z_{0})=g'(f(z_{0}))f'(z_{0}) $$\qed
+\end{itemize}
+\subsubsection*{Definition 2.11}
+A function $f:G \to  \mathbb{C}$ defined on a domain $G$ is called \emph{holomorphic} in $G$ if it has a complex derivative at all points in $G$.
 
-                \end{itemize}
-                \subsubsection{Definition}
-                    A function $f:G \to  \mathbb{C}$ defined on a domain $G$ is called \emph{holomorphic} in $G$ if it has a complex derivative at all points in $G$.
-            \newpage
-            \subsection{Derivative as a linear approximation}
-                \subsubsection{Definition}
-                    Let $w(z)$ be a complex function in a neighbourhood of $z=0$. The function $w(z)=o(z)$ if
-                    $$\lim_{z\to0}\frac{w(z)}{z}=0$$
-                    $w(z)=O(z)$ if
-                    $$\lim_{z\to0}\frac{w(z)}{z}=c,\quad c\neq 0$$
-                \subsubsection{Lemma}
-                    Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a compelx function on $G$. $f$ is complex differentiable at $z_{0}\in G$ iff there exists a constant $A\in \mathbb{C}$ s.t.
-                    $$ f(z_{0}+h)-f(z_{0})=Ah+o(h),\quad \forall h\in G_{z_{0}}$$
-                    \textit{where $G_{z_{0}}$ is a neighbourhood of $z_{0}$ in $G$ and $A=f'(z_{0})$.}\\
-                    \underline{Proof}\\
-                    Suppose $f$ differentiable at $z_{0}$. Let $A=f'(z_{0})$. Define $w:G_{z_{0}} \to  \mathbb{C};h\to f(z_{0}+h)-f(z_{0})-Ah$. Then
-                    $$\lim_{h\to0}\frac{w(h)}{h}=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})-f'(z_{0})h}{h}=f'(z_{0})-f'(z_{0})=0$$
-                    Hence $w(h)=o(h)$ is satified.\\
-                    Now supppose that $A\in \mathbb{C}, w:G_{z_{0}} \to  \mathbb{C};h\to f(z_{0}+h)-f(z_{0})-Ah=o(h)$. Then
-                    $$ \lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}=\lim_{h\to0}\frac{Ah+w(h)}{h}= A+\lim_{h\to0}\frac{w(h)}{h}=A$$
-                    It follows that $\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}$ exists and $f'(z_{0})=A$.\qed
-            \newpage
-            \subsection{Real versus Complex Differentiation}
-                We consider arbitrary maps of the form
-                $$F:\mathbb{R}^{2}\to \mathbb{R}^{2};(x,y)\to(u(x,y),v(x,y)) $$
-                \subsubsection{Theorem}
-                    The function $F$ is real differentiable at $(x_{0},y_{0})$ if there exists a linear map $A:\mathbb{R}^{2} \to  \mathbb{R}^{2}$ s.t.
-                    $$F(x,y)-F(x_{0},y_{0})=(x-x_{0},y-y_{0})A+o(\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}})$$
-                    \textit{The matrix $A$ is the transpose of the Jacobian of $F$ calculated in $(x_{0},y_{0})$, namely}
-                    $$A^{t}=JF(x_{0},y_{0})=
-                    \begin{pmatrix}
-                            u_{x}(x_{0},y_{0}) & u_{y}(x_{0},y_{0})\\
-                            v_{x}(x_{0},y_{0}) & v_{y}(x_{0},y_{0})
-                    \end{pmatrix}$$
-                    and
-                    $$\lim_{x\to x_{0},y\to y_{o}}\frac{o(\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}})}{\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}}}=0 $$
+\newpage
+\subsection{Derivative as a linear approximation}
+\subsubsection*{Definition 2.12}
+Let $w(z)$ be a complex function in a neighbourhood of $z=0$. The function $w(z)=o(z)$ if
+$$\lim_{z\to0}\frac{w(z)}{z}=0$$
+$w(z)=O(z)$ if
+$$\lim_{z\to0}\frac{w(z)}{z}=c,\quad c\neq 0$$
+\subsubsection*{Lemma 2.13}
+Let $G$ be a domain in $\mathbb{C}$ and $f:G \to  \mathbb{C}$ a compelx function on $G$. $f$ is complex differentiable at $z_{0}\in G$ iff there exists a constant $A\in \mathbb{C}$ s.t.
+$$ f(z_{0}+h)-f(z_{0})=Ah+o(h),\quad \forall h\in G_{z_{0}}$$
+\textit{where $G_{z_{0}}$ is a neighbourhood of $z_{0}$ in $G$ and $A=f'(z_{0})$.}\\
+\underline{Proof}\\
+Suppose $f$ differentiable at $z_{0}$. Let $A=f'(z_{0})$. Define $w:G_{z_{0}} \to  \mathbb{C};h\to f(z_{0}+h)-f(z_{0})-Ah$. Then
+$$\lim_{h\to0}\frac{w(h)}{h}=\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})-f'(z_{0})h}{h}=f'(z_{0})-f'(z_{0})=0$$
+Hence $w(h)=o(h)$ is satified.\\
+Now supppose that $A\in \mathbb{C}, w:G_{z_{0}} \to  \mathbb{C};h\to f(z_{0}+h)-f(z_{0})-Ah=o(h)$. Then
+$$ \lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}=\lim_{h\to0}\frac{Ah+w(h)}{h}= A+\lim_{h\to0}\frac{w(h)}{h}=A$$
+It follows that $\lim_{h\to0}\frac{f(z_{0}+h)-f(z_{0})}{h}$ exists and $f'(z_{0})=A$.\qed
 
-            \newpage
-            \subsection{Caughy-Riemann Equations}
-                \subsubsection{Cauchy-Riemann Theorem}
-                    Suppose $f:G \to  \mathbb{C};z\to u(x,y)+iv(x,y)$ is complex differentiable in $z_{0}\in G$. Then $u,(x,y)$ and $v(x,y)$ satisfy the following equations:
-                    $$ $$
+\newpage
+\subsection{Real versus Complex Differentiation}
+We consider arbitrary maps of the form
+$$F:\mathbb{R}^{2}\to \mathbb{R}^{2};(x,y)\to(u(x,y),v(x,y)) $$
+\subsubsection*{Theorem 2.14}
+The function $F$ is real differentiable at $(x_{0},y_{0})$ if there exists a linear map $A:\mathbb{R}^{2} \to  \mathbb{R}^{2}$ s.t.
+$$F(x,y)-F(x_{0},y_{0})=(x-x_{0},y-y_{0})A+o(\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}})$$
+\textit{The matrix $A$ is the transpose of the Jacobian of $F$ calculated in $(x_{0},y_{0})$, namely}
+$$A^{t}=JF(x_{0},y_{0})=
+\begin{pmatrix}
+        u_{x}(x_{0},y_{0}) & u_{y}(x_{0},y_{0})\\
+        v_{x}(x_{0},y_{0}) & v_{y}(x_{0},y_{0})
+\end{pmatrix}$$
+and
+$$\lim_{x\to x_{0},y\to y_{o}}\frac{o(\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}})}{\sqrt{(x-x_{0})^{2}+(y-y_{0})^{2}}}=0 $$
 
+\newpage
+\subsection{Cauchy-Riemann Equations}
+\subsubsection*{Theorem 2.17 \textit{(Cauchy-Riemann Theorem)}}
+Suppose $f:G \to  \mathbb{C};z\to u(x,y)+iv(x,y)$ is complex differentiable in $z_{0}\in G$. Then $u,(x,y)$ and $v(x,y)$ satisfy the following equations:
+\begin{align*}
+    \frac{\delta u}{\delta x}(x_{0},y_{0}) &=\frac{\delta v}{\delta y}(x_{0},y_{0})\\
+    \frac{\delta u}{\delta y}(x_{0},y_{0}) &=-\frac{\delta v}{\delta x}(x_{0},y_{0})
+\end{align*}
+Moreover the derivative of $f$ at $z$ can be represented as:
+$$f'(z_{0})=\frac{\delta u}{\delta x}(x_{0},y_{0})+i\frac{\delta v}{\delta x}(x_{0},y_{0}) $$
+\begin{proof}
+    Since $f$ is differentiable at $z_{0}$ we can chose $h=t\in \mathbb{R}$ s.t.
+    \begin{align*}
+        f'(z_{0})&=\lim_{t\to 0}\frac{f(z_{0}+t)-f(z_{0})}{t}\\
+        &=\lim_{t\to0}\frac{u(x_{0}+t,y_{0})-u(x_{0},y_{0})+i(v(x_{0}+t,y_{0})-v(x_{0},y_{0}))}{t}\\
+        &=u_{x}(x_{0},y_{0})+iv_{x}(x_{0},y_{0})
+    \end{align*}
+    We could also chose $h=it\in i \mathbb{R}$ s.t.
+    \begin{align*}
+        f'(z_{0})&=\lim_{t\to 0}\frac{f(z_{0}+it)-f(z_{0})}{it}\\
+        &=\lim_{t\to0}\frac{u(x_{0},y_{0}+t)-u(x_{0},y_{0})+i(v(x_{0},y_{0})-v(x_{0},y_{0}+t))}{it}\\
+        &=-iu_{y}(x_{0},y_{0})+v_{y}(x_{0},y_{0})
+    \end{align*}
+    Comparing the above two expressions we obtain the Cauchy-Riemann Equations.
+\end{proof}
+\subsubsection*{Theorem 2.18}
+The function $f:G \to  \mathbb{C};z\to u(x,y)+iv(x,y)$ is complex differentiable at $z_{0}\in G$ if the functions $u,v$ are differentiable at $(x_{0},y_{0})\in G$ and satisfy the Cauchy-Riemann Equations.
+\begin{proof}
 
+\end{proof}
+\subsubsection*{Lemma 2.22}
+If the functin $f=u+iv$ is holoomorphic in a domain $G\subseteq \mathbb{C}$, the Cauchy-Riemann equations can be written in the form:
+$$ \frac{\partial}{\partial\overline{z}}f=0$$
+\begin{proof}
+    Let us calculate:
+    $$\frac{\partial}{\partial\overline{z}}f=\frac{1}{2}(\frac{\partial}{\partial x}+i \frac{\partial}{\partial y})(u+iv)=\frac{1}{2}(u_{x}+iu_{y})+\frac{i}{2}(v_{x}+iv_{y})= \frac{1}{2}(u_{x}-v_{y})+\frac{i}{2}(v_{x}+u_{y}) $$
+    Hence the Cauchy-Riemann equations are equivalent to $\frac{\partial}{\partial\overline{z}}f=0$.
+\end{proof}
+
+\newpage
+\section{Integration of complex functions}
+\subsection{Paths and contours on the plane}
 
 
 

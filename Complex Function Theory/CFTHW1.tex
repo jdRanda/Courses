@@ -1,0 +1,64 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{jdRanda}
+
+\begin{document}
+\subsection*{Exercise 1.b)}
+\begin{align*}
+    |z+w|^{2} &= |z^{2}|+2zw+|w^{2}|\\
+    &\leq |z|^{2}+|w|^{2}\\
+    &\leq (|z|+|w|)^{2}\\
+    |z+w| &\leq|z|+|w|
+\end{align*}
+\subsection*{Exercise 4}
+%Suppose $z=0\in \mathbb{C}$, let $h=t\in \mathbb{R}$
+%$$ \lim_{t\to0}\frac{f(0+t)-f(0)}{t}=\lim_{t\to0}\frac{\frac{t^{4}}{t^{2}}}{t}=0 $$
+%Let $h=it\in i\mathbb{R}$
+%$$ \lim_{t\to0}\frac{f(0+it)-f(0)}{it}=\lim_{t\to0}\frac{\frac{(it)^{4}}{t^{2}}}{it}=0 $$
+%\begin{align*}
+%    f(z)&=\frac{z^{4}}{|z|^{2}}=\frac{z^{4}}{\overline{z}z}=\frac{(x+iy)^{4}}{x^{2}+y^{2}}\\
+%    &=\frac{x^{4}+4ix^{3}y-6x^{2}y^{2}-4ixy^{3}+y^{4}}{x^{2}+y^{2}}\\
+%    f(z)&=\frac{1}{x^{2}+y^{2}}((x^{4}+y^{4}-6x^{2}y^{2})+i(4x^{3}y-4xy^{3}))
+%\end{align*}
+%Now we have our two functions $u(x,y),v(x,y)$.
+\begin{itemize}
+    \item[a)]  \\
+    Suppose $z\in \mathbb{C}, z\neq0$, then $f(z)=\frac{z^{4}}{|z|^{2}}= \frac{z^{4}}{\overline{z}z}$. Hence applying lemma 2.22 we have
+    $$\frac{\partial}{\partial\overline{z}}f(z)=\frac{-z^{3}}{\overline{z}^{2}}\neq 0\text{   for } z \neq 0$$
+    Now suppose $z=0\in \mathbb{C}$, let $h\in \mathbb{C}$, then
+    $$ \lim_{h\to0}\frac{f(0+h)-f(0)}{h}=\lim_{h\to0}\frac{\frac{h^{3}}{\overline{h}}}{h}= \lim_{h\to0}\frac{h^{2}}{\overline{h}}=0 $$
+    Hence $f$ is complex differentiable at $z=0$.
+    \item[b)]
+    From our function $f(z)=2xy+i(x+\frac{2}{3}y^{3})$ we have $u(x,y)=2xy,v(x,y)= x+\frac{2}{3}y^{3}$ which are both trivially continious as they are polynomials. So we have
+    $$u_{x}=2y,u_{y}=2x,v_{x}=1,v_y=2y^{2} $$
+    Hence for
+    \begin{align*}
+        u_{x}=2y &= v_y=2y^{2}\\
+        u_{y}=2x &= -v_{x}=-1
+    \end{align*}
+    The only solutions are $z=0,z=-\frac{1}{2}$.
+\end{itemize}
+
+
+
+\subsection*{Exercise 7,a)}
+
+
+
+\subsection*{Exercise 9}
+
+
+
+\subsection*{Exercise 10}
+Let $f(z)=z^{3}$, $z=x+iy, x,y\in \mathbb{R}$. Then
+$$ f(z)=(x+iy)^{3}=x^{3}+3x^{2}iy-3xy^{2}-iy^{3}$$
+and so we have that
+$$Re(f)= x^{3}-3xy^{2}$$
+\end{document}
