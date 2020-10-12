@@ -1,0 +1,36 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{jdRanda}
+
+\begin{document}
+\subsection*{Exercise 1.2}
+Prove for $\alpha<3, V_{\alpha+1}=V_{\alpha}\cup \mathcal{P}(V_{\alpha})$.
+\begin{proof}
+    We know, by definition, $V_{n+1}=\mathcal{P}(V_{n}), \forall n\in \mathbb{N}$. So want to show $V_{\alpha}\cup \mathcal{P}(V_{\alpha})=\mathcal{P}(V_{\alpha})$.
+    We have that $\mathcal{P}(V_{\alpha})=\{v|v\subseteq V_{\alpha}\}$. Everything is a subset of itself so,
+    $$V_{\alpha}\subseteq \mathcal{P}(V_{\alpha})$$
+    Hence
+    $$V_{\alpha}\cup \mathcal{P}(V_{\alpha})=\mathcal{P}(V_{\alpha})$$
+\end{proof}
+\subsection*{Exercise 1.4}
+Let $x,y=\{\{0,1\},\{2\}\},\{\{0,1,2\}\}$ respectivly. Then $x\neq y$ but
+$$\cup x= \{0,1,2\}\ = \cup y$$
+\subsection*{Exercise 1.11}
+If $(A,\prec)$ is a total ordering and $A$ finite, show it is a well ordering.
+\begin{proof}
+    Want to show (i) it is  a string total ordering and (ii) $\forall Y\subseteq A, Y\neq \emptyset\Rightarrow Y$has a $\prec$-least element.\\
+    (i) is true by initial assumption, so wts (ii).\\
+    Let $a_{0},\dots,a_{k}\in A$ be the ordered elements of A. Let $Y\subseteq A, Y\neq \emptyset$. Suppose to the contrary that $Y$ has no $\prec$-least element, so $a_{0}\not\in Y$ as it would be a $\prec$-least element. Let $B=Y^{c}\subseteq A$ be the set of elements of $A$ not in $Y$, so $a_{0}\in B$. Now suppose $a_{0},\dots,a_{n}\in B,\text{for some } n\in \mathbb{N}$, then $a_{n+1}\not\in Y$ as $a_{0},\dots,a_{n}\not\in Y$ so $a_{n+1}$ would be a $\prec$-least element. So $a_{n+1}\in B$. By induction, (as $A$ finite), $B=A$ so $Y=\emptyset$ which is a contradiction. \\
+    Hence (i) and (ii) hold and $(A,\prec)$ is a wellordering.
+\end{proof}
+
+
+
+\end{document}
