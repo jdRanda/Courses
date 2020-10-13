@@ -1,0 +1,44 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{jdRanda}
+
+\begin{document}
+\subsection*{Exercise 1}
+\begin{itemize}
+    \item[i)]
+
+    \item[i)]
+\end{itemize}
+\subsection*{Exercise 6}
+\subsection*{Exercise 10}
+\begin{itemize}
+    \item[i)]Want to show $f^{-1}(\emptyset)=\emptyset$\\
+    Suppose to the contrary that $\exists x\in f^{-1}(\emptyset)$. This would imply $f(x)\in\emptyset$ which is a contradiction. Hence $f^{-1}(\emptyset)$ has no elements and thus $f^{-1}(\emptyset)=\emptyset$.
+    \item[ii)]
+    \item[iii)]
+    \item[iv)]
+    \begin{align*}
+            x\in f^{-1}(\cup_{\alpha}E_{\alpha}) &\iff f(x)\in\cup_{\alpha}E_{\alpha}\\
+            &\iff f(x)\in E_{\alpha_{1}} \quad\text{for some } \alpha_{1}\\
+            &\iff x\in f^{-1}(E_{\alpha_{1}})\\
+            &\iff x\in\cup_{\alpha}f^{-1}(E_{\alpha})
+    \end{align*}
+    \item[v)]
+    \begin{align*}
+            x\in f^{-1}(\cap_{\alpha}E_{\alpha}) &\iff f(x)\in\cap_{\alpha}E_{\alpha}\\
+            &\iff f(x)\in E_{\alpha} \quad\forall\alpha\\
+            &\iff x\in f^{-1}(E_{\alpha})\\
+            &\iff x\in\cap_{\alpha}f^{-1}(E_{\alpha})
+    \end{align*}
+\end{itemize}
+
+
+
+\end{document}
