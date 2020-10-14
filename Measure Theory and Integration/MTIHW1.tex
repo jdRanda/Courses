@@ -12,25 +12,46 @@
 \begin{document}
 \subsection*{Exercise 1}
 \begin{itemize}
-    \item[i)]
+    \item[i)] Want to show $[a,b]=\cap_{n=1}^{\infty}(a- \frac{1}{n},b+ \frac{1}{n}) $.\\
+    We have $a- \frac{1}{n}> a,b+ \frac{1}{n}< b, \forall n$. Which implies $[a,b]\subseteq(a- \frac{1}{n},b+ \frac{1}{n}), \forall n$ which implies $[a,b]\subseteq\cap_{n=1}^{\infty}(a- \frac{1}{n},b+ \frac{1}{n})$.\\
+    Now take $x\not\in[a,b]$, consider the case $x>b$. As $n\to\infty, b+\frac{1}{n}\to b$. By A.P. we can say $\exists N\in \mathbb{N}$ s.t. $b+\frac{1}{N}<x$, so $x\not\in (a- \frac{1}{N},b+ \frac{1}{N})$.
+    Analogous for the case $x<a$. Finally $x\not\in[a,b]\Rightarrow x\not\in\cap_{n=1}^{\infty}(a- \frac{1}{n},b+ \frac{1}{n}) $ giving us $\cap_{n=1}^{\infty}(a- \frac{1}{n},b+ \frac{1}{n}) \subseteq [a,b]$.
+    \item[i)]Want to show $(a,b)=\cup_{n=1}^{\infty}(a+ \frac{1}{n},b- \frac{1}{n}) $.\\
+    We have $a+ \frac{1}{n}> a,b- \frac{1}{n}< b, \forall n$. Which implies $(a+ \frac{1}{n},b- \frac{1}{n})\subseteq(a,b), \forall n$ which implies $\cap_{n=1}^{\infty}(a+ \frac{1}{n},b- \frac{1}{n})\subseteq(a,b)$.\\
+    Now take $x\in(a,b)$. By A.P. $\exists N\in \mathbb{N} $ s.t. $x>(a+\frac{1}{N}),x<(b- \frac{1}{N})$. So $x\in(a+\frac{1}{N},b- \frac{1}{N}) \Rightarrow x\in \cup_{n=1}^{\infty}(a+ \frac{1}{n},b- \frac{1}{n}) $, giving us $(a,b)\subseteq\cup_{n=1}^{\infty}(a+ \frac{1}{n},b- \frac{1}{n})$.
 
-    \item[i)]
 \end{itemize}
 \subsection*{Exercise 6}
+Take $\Omega=\{a,b,c\},\mathbb{A}=\{\emptyset,\Omega,\{a,b\},\{c\}\}$. Let $f:\Omega\to \mathbb{R}$ such that $f(a)=f(c)=1,f(b)=-1$. Then we have that $f$ is not measurable as, when considering $A_{\alpha}=\{x\in\Omega: f(x)<\alpha\}$, take $\alpha = 1$ then $A_{\alpha}=\{b\}\not\in \mathbb{A}$.\\
+Now we have $|f(a)|=|f(b)|=|f(c)|=1,f^{2}(a)=f^{2}(b)=f^{2}(c)=1$, so for both
+$$A_{\alpha}=
+\begin{cases}
+  \Omega, & \alpha > 1 \\
+  \emptyset, & \alpha \leq 1
+\end{cases} \Rightarrow \forall\alpha, A_{\alpha}\in \mathbb{A}
+$$
+Hence both $|f|,f^{2}$ are measurable.
 \subsection*{Exercise 10}
 \begin{itemize}
     \item[i)]Want to show $f^{-1}(\emptyset)=\emptyset$\\
     Suppose to the contrary that $\exists x\in f^{-1}(\emptyset)$. This would imply $f(x)\in\emptyset$ which is a contradiction. Hence $f^{-1}(\emptyset)$ has no elements and thus $f^{-1}(\emptyset)=\emptyset$.
-    \item[ii)]
-    \item[iii)]
-    \item[iv)]
+    \item[ii)] Want to show $f^{-1}(\Omega_{2})=\Omega_{1}$\\
+    We have $ f^{-1}(\Omega_{2})=\{w\in\Omega_{1}:f(w)\in\Omega_{2}\}$, and by the definition of $f$, $\forall w\in\Omega_{1},f(w)\in\Omega_{2}$. So trivially we have $f^{-1}(\Omega_{2})=\Omega_{1} $.
+    \item[iii)] Want to show $f^{-1}{E\text{\textbackslash} F}=
+    f^{-1}(E)\text{\textbackslash} f^{-1}(F)$.
+    \begin{align*}
+        x\in f^{-1}(E\text{\textbackslash} F) &\iff f(x)\in E \wedge f(x)\not\in F\\
+        &\iff x\in f^{-1}(E)\wedge x\not\in f^{-1}(F)\\
+        &\iff x\in f^{-1}(E)\text{\textbackslash} f^{-1}(F)
+    \end{align*}
+    \item[iv)] Want to show $f^{-1}(\cup_{\alpha}E_{\alpha}) = \cup_{\alpha}f^{-1}(E_{\alpha}) $
     \begin{align*}
             x\in f^{-1}(\cup_{\alpha}E_{\alpha}) &\iff f(x)\in\cup_{\alpha}E_{\alpha}\\
             &\iff f(x)\in E_{\alpha_{1}} \quad\text{for some } \alpha_{1}\\
             &\iff x\in f^{-1}(E_{\alpha_{1}})\\
             &\iff x\in\cup_{\alpha}f^{-1}(E_{\alpha})
     \end{align*}
-    \item[v)]
+    \item[v)] Want to show $f^{-1}(\cap_{\alpha}E_{\alpha})=\cap_{\alpha}f^{-1}(E_{\alpha}) $
     \begin{align*}
             x\in f^{-1}(\cap_{\alpha}E_{\alpha}) &\iff f(x)\in\cap_{\alpha}E_{\alpha}\\
             &\iff f(x)\in E_{\alpha} \quad\forall\alpha\\
