@@ -18,18 +18,8 @@
     |z+w| &\leq|z|+|w|
 \end{align*}
 \subsection*{Exercise 4}
-%Suppose $z=0\in \mathbb{C}$, let $h=t\in \mathbb{R}$
-%$$ \lim_{t\to0}\frac{f(0+t)-f(0)}{t}=\lim_{t\to0}\frac{\frac{t^{4}}{t^{2}}}{t}=0 $$
-%Let $h=it\in i\mathbb{R}$
-%$$ \lim_{t\to0}\frac{f(0+it)-f(0)}{it}=\lim_{t\to0}\frac{\frac{(it)^{4}}{t^{2}}}{it}=0 $$
-%\begin{align*}
-%    f(z)&=\frac{z^{4}}{|z|^{2}}=\frac{z^{4}}{\overline{z}z}=\frac{(x+iy)^{4}}{x^{2}+y^{2}}\\
-%    &=\frac{x^{4}+4ix^{3}y-6x^{2}y^{2}-4ixy^{3}+y^{4}}{x^{2}+y^{2}}\\
-%    f(z)&=\frac{1}{x^{2}+y^{2}}((x^{4}+y^{4}-6x^{2}y^{2})+i(4x^{3}y-4xy^{3}))
-%\end{align*}
-%Now we have our two functions $u(x,y),v(x,y)$.
 \begin{itemize}
-    \item[a)]  \\
+    \item[a)]
     Suppose $z\in \mathbb{C}, z\neq0$, then $f(z)=\frac{z^{4}}{|z|^{2}}= \frac{z^{4}}{\overline{z}z}$. Hence applying lemma 2.22 we have
     $$\frac{\partial}{\partial\overline{z}}f(z)=\frac{-z^{3}}{\overline{z}^{2}}\neq 0\text{   for } z \neq 0$$
     Now suppose $z=0\in \mathbb{C}$, let $h\in \mathbb{C}$, then
@@ -46,10 +36,19 @@
     The only solutions are $z=0,z=-\frac{1}{2}$.
 \end{itemize}
 
-
-
+\newpage
 \subsection*{Exercise 7,a)}
-
+We prove directly from the definition of the derivative. We already know
+$$ \lim_{h\to0}\frac{f(z+h)-f(z)}{h}=f'(z)$$
+and so we show
+\begin{align*}
+    \lim_{h\to0}\frac{g(z+h)-g(z)}{h} &=
+    \lim_{h\to0}\frac{\overline{f(\overline{z+h})}-\overline{f(\overline{z})}}{h}\\
+    &= \lim_{h\to0}\frac{\overline{f(\overline{z}+\overline{h})-{f(\overline{z})}}}{h}\\
+    &=\overline{\lim_{h\to0}\frac{f(\overline{z}+\overline{h})-{f(\overline{z})}}{\overline{h}}}\\
+    &=\overline{f'(\overline{z})}<\infty
+\end{align*}
+Hence g is complex differentiable at $z$.
 
 
 \subsection*{Exercise 9}

@@ -151,6 +151,56 @@ Let $(X,\mathbb{X})$ be a measurable space. $f:X\to \overline{\mathbb{R}}$ is me
     Suppose $f_{1},A,B$ are measurable. For $\alpha\geq0$ we have
     $$\{x:f(x)>\alpha\}=\{x:f_{1}(x)>\alpha\}\cup A $$
     And thus is measurable, analogous for $\alpha<0$.\\
-    Now suppose f is measurable. 
+    Now suppose f is measurable.
 \end{proof}
+
+\subsection*{Definition 2.14}
+A \emph{simple function} is a finite linear combination of characteristic functions of measurable sets, i.e. $f:X\to \mathbb{R}$ is simple if $f(x)=\sum_{i=1}^{n}a_{i} \chi(A_{i})$, were $a_{i}\in \mathbb{R}, A_{i}\in \mathbb{X}$.
+\subsection*{Lemma 2.15}
+Let $f\in M(X,\mathbb{X}),f\geq0$. Then there exists a sequence $(\phi_{n})$ in $M(X,\mathbb{X})$ such that
+\begin{itemize}
+    \item[i)] $0\leq \phi_{n}(x)\leq\phi_{n+1}(x)\quad\forall x\in X, n\in \mathbb{N}$
+    \item[ii)] $\lim_{n\to\infty}\phi_{n}(x)=f(x)$
+    \item[iii)] Each $\phi_{n}$ is a smiple function.
+\end{itemize}
+\begin{proof}
+Fix $n\in \mathbb{N}$ and for $k\in \{0,\dots,n2^{n}-1\}$ define
+$$E_{k,n}=\{x:f(x)\in[\frac{k}{2^{n}},\frac{k+1}{2^{n}}] \text{ and } E_{n2^{n},n}= \{x:f(x)\geq n\}$$
+We then define
+$$\phi_{n}(x)= \frac{k}{2^{n}} \text{ if } x\in E_{k,n}$$
+Giving us
+$$ \phi_{n}=\sum_{k=0}^{2^{n}n} \frac{k}{2^{n}}\chi E_{k,n}$$
+which is a simple funciton. \\\\
+Here we are splitting the interval $[0,n)$ into $n2^{n}$ parts and approximating $f$ by its lowest value within the interval. If $f(x)\geq n$ we approximate $f(x)$ by $n$. Since $f$ is measurable we know sets $E_{k,n}$ and $E_{n2^{2},n}=\{x:f(x)\geq n\}$ are measurable, so $\phi_{n}$ is indeed simple.\\\\
+Now we check pointwise convergence of $\phi_{n}$ to $f$. Let $x\in X$ and then either $f(x)=\infty, f(x)<\infty$.\\
+Assume $f(x)=\infty$ then it is clear $\phi_{n}(x)=n$ and as $n\to\infty, \phi_{n}(x)\to f(x)$.\\
+Assume $f(x)<\infty$ then $f(x)<N,  N\in \mathbb{N}$ and $x\in E_{k,n}$ for some $k\in \mathbb{N},n\geq N$. However in every set $E_{k,n}$ we have $|\phi_{n}(x)-f(x)|<\frac{1}{2^{n}}$. Taking $n\to\infty$ we have $\phi_{n}(x)\to f(x)$. Therefore pointwise convergence.\\\\
+Now we check $\phi_{n}\leq \phi_{n+1}$.\\
+Assume $x\in E_{(n+1)2^{n+1},n+1}$ then $\phi_{n+1}(x)=n+1>\phi_{n}(x)$.\\
+Assume $x\in E_{k,n+1}$ for some $k\in\{0,\dots,(n+1)2^{n+1}-1$. Then $\phi_{n+1}(x)=\frac{k}{2^{n+1}}$. But we also have $x\in E_{[k/2],n}$ implying $\phi_{n}(x)=\frac{[k/2]}{n}$. Hence $\phi_{n+1}(x)\geq\phi_{n}(x)$.
+\end{proof}
+\subsection{Definition}
+A function $f:X \to  \mathbb{R}$ is called \emph{elementary} if it is measurable and take no more than a countable number of values, i.e.
+$$f(x)=\sum_{i=1}^{\infty}a_{i}\chi(A_{i}) $$
+where $a_{i}\in \mathbb{R}, A_{i}=\{x\in X: f(x)=a_{i}\}$.
+\subsection{Lemma}
+A function $f:X \to  \mathbb{R}$ is measurable iff it is a limit of a uniformly convergent sequence of elementary functions.
+\begin{proof}
+    Let $\{f_{n}\}$ be a sequence of elementary function and $f_{n}\to f$ uniformly on $X$. Uniform convergence implies pointwise convergence so we are done using lemma 2.15.\\\\
+    Now let f be a measurable function, define a sequence $\{f_{n}\}$ s.t.
+    $$f_{n}(x)=\frac{m}{n} \text{ on } A_{n}^{m}=\{x\in X: \frac{m}{n}\leq f(x)< \frac{m+1}{n}\},m\in \mathbb{Z}, n\in \mathbb{N} $$
+    Clearly $f_{n}(x)$ is an elementary function and $|f_{n}(x)-f(x)|\leq \frac{1}{n}$ on X.
+\end{proof}
+\subsection{Lemma}
+Let $(X,\mathbb{X})$ be a measuable space, $f:X \to  \mathbb{R}$ be $\mathbb{X}$-measurable, and $\phi:\mathbb{R} \to  \mathbb{R}$ be $\mathbb{B}$-measurable. Then $g(x)=\phi(f(x))$ is $\mathbb{X}$-measurable.
+\begin{proof}
+    
+\end{proof}
+
+
+
+
+
+
+
 \end{document}

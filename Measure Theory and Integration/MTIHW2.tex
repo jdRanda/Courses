@@ -1,0 +1,47 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{Joseph}
+
+\begin{document}
+Joseph Dowling.
+\subsection*{Exercise 1}
+Want to show for fixed $A\in \mathbb{U},\forall E\in \mathbb{U}$, $\lambda(E)=\mu(A\cap E)$ is a measure.
+\begin{itemize}
+    \item[I)] $\lambda(\emptyset)=\mu(A\cap\emptyset)=\mu(\emptyset)=0$
+    \item[II)] Let $E\in \mathbb{U}$. $\lambda(E)=\mu(E\cup A)\geq 0$ as $\mu$ is a measure and $E\cup A \subseteq A\in \mathbb{U} $.
+    \item[III)] Let $E_{1},E_{2},\dots$ be disjoint subsets of $\mathbb{U}$ such that $\cup_{i}E_{i}=E\in \mathbb{U}$.
+    \begin{align*}
+        \lambda(\cup_{n=1}^{\infty}E_{n}) &= \lambda(E)\\
+        & = \mu(A\cap E) = \mu(\cup_{n=1}^{\infty}(A\cap E_{n}))\\
+        & = \sum_{n=1}^{\infty}\mu(A\cap E_{n})\\
+        & = \sum_{n=1}^{\infty}\lambda(E_{n})
+    \end{align*}
+\end{itemize}
+Hence we have that $\lambda$ is a measure on $\mathbb{U}$.
+\subsection*{Exercise 8}
+Let $X$ be a set of at least two elements. Set $\mathbb{X}=\{\emptyset,X\}$. Then trivially $(X,\mathbb{X})$ is a measure space. Define $\mu:\mathbb{X}\to\overline{\mathbb{R}}$ by $\mu(X)=\mu(\emptyset)=0$. Then $(X,\mathbb{X},\mu)$ is not complete as $\exists A\subset X$ with $A\not\in \mathbb{X}$ but $\mu(X)=0$.
+\subsection*{Exercise 12}
+\begin{itemize}
+    \item[a)]
+    Want to show $f_{n}\to f$ uniform.\\
+    Let $\epsilon>0, N>\frac{1}{\epsilon}$. Then for $n\geq N$ there are two cases. Case 1 for $x\in[0,n]$\\
+    $$|f_{n}(x)-f(x)|=|\frac{1}{n}-0|=\frac{1}{n}\leq\frac{1}{N}<\epsilon$$
+    Case 2 for $x\not\in[0,n]$
+    $$|f_{n}(x)-f(x)|=0<\epsilon $$
+    Now want to show $\int fdm\neq \lim\int f_{n}dm$\\
+    We know trivially that $\int fdm=0$ as $f$ is the zero function.
+
+
+    \\This does not contradict the Monotone Convergence Theorem as $(f_{n})$ is not monotone non-decreasing.
+    \item[b)]
+
+\end{itemize}
+
+\end{document}

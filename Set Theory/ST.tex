@@ -67,6 +67,7 @@ For two sets $X,Y$, there are relations $R$ that hold between some elements of $
     \item Reflexive:  $x\in X \Rightarrow xRx$
     \item Irreflexive:  $x\in X \Rightarrow \neg (xRx)$
     \item Symmetric:  $(x,y\in X \wedge xRy) \Rightarrow yRx$
+    \item Antisymmetric: $(x,y\in X \wedge xRy  \wedge yRx)\Rightarrow x=y$
     \item Connected:  $(x,y\in X) \Rightarrow (x=y\vee xRy\vee yRx)$
     \item Transiative:  $(x,y,z\in X \wedge xRy \wedge yRz) \Rightarrow xRz$
 \end{itemize}
@@ -110,10 +111,153 @@ $$\forall x,y (x,y\in X\Rightarrow (x=y\vee x\prec y\vee y\prec x)) $$
     \item[i)]$(A,\prec)$ is a wellordering if it is a string total orderings and for any subset $Y\subseteq A$, $Y\neq \emptyset\Rightarrow Y$ has a $\prec$-least element. We write $(A,\prec)\in WO$
     \item[ii)] A partial ordering $R$ on a set $A$, $(A,R)$ is a wellfounded relation if for any subset $Y\subseteq A$, $Y\neq \emptyset\Rightarrow Y$ has an $R$-minimal element.
 \end{itemize}
+\subsection*{Lemma 1.16}
+A strict total ordering $(A,\prec)$ is a wellordering iff any non-empty \emph{end segment} $C\subseteq A$, has a $\prec$-least element.
+\textit{We say $C\subseteq A$ is an end segment of the strict total order $(A,\prec)$, if whenever $a\in C$ and $a\prec b$, then $b\in C.$}
+\begin{proof}
 
+\end{proof}
+\subsection*{Definition 1.17 (Kuratowski)}
+Let $x,y$ sets. The ordered pair set of $x$ and $y$ is the set
+$$\langle x,y \rangle=\{\{x\},\{x,y\}\}$$
+\subsection*{Lemma 1.18 (Uniqueness theorem for ordered pairs)}
+$$\langle x,y \rangle = \langle u,v \rangle \iff x=u\wedge y=v$$
+\begin{proof}
+    $(\Leftarrow)$ is trivial. So Suppose $\langle x,y \rangle = \langle u,v\rangle$.\\
+    \begin{itemize}
+        \item[Case 1] $x=y$. Then $\langle x,y \rangle = \langle x,x\rangle= \{\{x\},\{x,x\}\}=\{x\{x\},\{x\}\}=\{\{x\}\}$. If this equals $\langle  x,v\rangle$ then we must have $u=v$. So $\langle u,v \rangle=\{\{u\}\}=\{\{x\}\}$. Hence by Extensionality $\{u\}=\{x\}$, and so again by Extensionality $u=x=y=v$.
+        \item[Case 2] $x\neq y$. Then $\langle x,y \rangle , \langle u,v\rangle$ have the same two elements, ($u\neq v$). Hence one of these elements has one member and the other two, so we cannot have $\{x\}=\{u,v\}$. So $\{x\}=\{u\}$  and $x=u$. But that means $\{x,y\}=\{u,y\}=\{u,v\}$. So of these last two sets, if they are the same then $y=v$.
+    \end{itemize}
+\end{proof}
+\subsection*{Definition 1.20}
+We define ordered k-tuple by induction: $\langle x_{1},x_{2} \rangle$ has been defined; if $\langle x_{1},x_{2}.\dots,x_{k}\rangle$ has been defined then $\langle x_{1},\dots,x_{k},x_{k+1}\rangle=\langle \langle x_{1},\dots,x_{k}\rangle, x_{k+1}\rangle$.
+\subsection*{Definition 1.21}
+\begin{itemize}
+    \item[i)] Let $A,B$ be sets. $A\times B=\{\langle x,y\rangle|x\in A \wedge y \in B\}$. If $A=B$ this is written as $A^{2}$.
+    \item[ii)] If $A_{1},\dots,A_{k+1}$ sets we define $A_{1}\times\dots\times A_{k+1}=(A_{1}\times\dots\times A_{k})\times A_{k+1}=
+    \{\langle\dots \langle\langle\langle x_{1},x_{2}\rangle,x_{3} \rangle,\dots,x_{k}\rangle,x_{k+1}\rangle|\forall i(1\leq i\leq k+1\Rightarrow x_{i}\in A_{i}). \}$
+    \item[iii)] In general $A\times B \neq B\times A$, and further $\times$ operation is not associative.
+\end{itemize}
+\subsection*{Definition 1.22}
+\begin{itemize}
+    \item[i)] A (binary) relation $R$ is a class of ordered pairs. R is thus any subset of some $A\times B$.
+    \item[ii)] We write $R^{-1}=\{\langle y,x\rangle|\langle x,y\rangle\in R$.
+\end{itemize}
+\subsection*{Definition 1.24}
+If R is a relation, then
+$$dom(R)=\{x|\exists y \langle x,y\rangle \in R\},ran(R)=\{y|\exists y \langle x,y\rangle \in R\}$$
+The field of a relation R, $ Field(R)=dom(R)\cup ran(R)$.
+\subsection*{Definition 1.25}
+\begin{itemize}
+    \item[i)] A relation $F$ is a function $("Func(F)")$ if $\forall x \in dom(F)$ there is a unique $y$ s.t $\langle x,y\rangle \in F$.
+    \item[ii)] If F is a function then $F$ is $(1-1)$ iff $\forall x,x'(\langle x,y\rangle\in F\wedge \langle x',y\rangle\in F \Rightarrow x=x')$
+\end{itemize}
+\subsection*{Definition 1.27}
+If $X,Y$ sets, then $^{X}Y=\{F|F:X\to Y$.
+\subsection*{Definition 1.28 (Indexed Cartesia Product)}
+Let $I$ be a set, and for each $i\in I$ let $A_{i}=\emptyset$ be a set; then
+$$\prod_{i\in I}A_{i}=\{f|Func(f),dom(f)=I\wedge\forall i\in I(f(i)\in A_{i})\}$$
+This allows us to take cartesian product indexed by any set, not just some finite $n$.
+\textit{NB: Our function $f$ can be seen as a `choice' function that choose some $f(i)\in A_{i}$ for each $i$.}
+\subsection*{Definition 1.30}
+A set $x$ is \emph{transiative}, $Trans(x)$, iff $\forall y\in x(y\subseteq x)$.
+\textit{NB:  We also equivalently abbreviate $Trans(x)=\cup x\subseteq x$}
+\subsection*{Definition 1.32 (The successor function)}
+Let $x$ a set. Then $S(x)=x\cup\{x\}$.
+\subsection*{Examples 1.33}
+If $x$ is transitive then so too is $S(x)$.
+\begin{proof}
+    Assume $x$ is transiative. Let $y\in S(x)$. If $y\in x$ then $y\subseteq x$ as x is transitive. Then $y\subseteq S(x)$. Else $y=x$, trivially $y\subseteq s(x)$, Hence transitive.
+\end{proof}
+For $X$ a class of transitive sets. Then $\cup X$ is transitive.
+\begin{proof}
+    Let $y\in X$. Want to show $y\subseteq \cup X$. So let $z\in y$, as $y\in \cup X$ theres some $t \in X, Trans(t)$, with $y\in t$. Then $z\in y\subseteq t$. So $z\in t\in X$. So $z in \cup X$. Hence $y\subseteq \cup X$.
+\end{proof}
 
+\subsection*{Lemma 1.33}
+$ Trans(x)\iff \cup S(x)=x$
+\begin{proof}
+    First note that $\cup S(x)=\cup(x\cup\{x\})=(\cup x) \cup (\cup\{x\})=(\cup x) \cup x$. For $(\rightarrow)$ , assume $Trans(x)$; then $\cup x \subseteq x$. Hence by the above $\cup S(x)\subseteq x$. Hence $\cup S(x)= x$.\\
+    For $(\leftarrow)$, assume $\cup S(x)=x$. We have from above $\cup x \subseteq (\cup x)\cup x = x$ by assumption. Hence transitive.
+\end{proof}
+\subsection*{Definition 1.34 (Transiative Closure)}
+We define by recursion on $n$:
+$$\cup^{0}x=x;\cup^{n+1}x=\cup(\cup^{n}x); TC(x)=\cup\{\cup^{n}x|n\in \mathbb{N}\} $$
+\subsection*{Lemma 1.35}
+For any set $x$
+\begin{itemize}
+    \item[i)] $x\subseteq TC(x)$, $Trans(TC(x))$.
+    \item[ii)] $Trans(t)\wedge x\subseteq t$ then $TC(x)\subseteq t$. Hence $TC(x)$ is the smallest transitive set containing x.
+    \item[iii)] $Trans(x)\iff TC(x)=x$.
+\end{itemize}
+\begin{proof}
+    \begin{itemize}
+        \item[i)] trivial.
+        \item[ii)] $x\subseteq t$ then $\cup^{0}\subseteq t$. By induction on k, assume $\cup^{k}\subseteq t$. Now use the fact $A\subseteq B \wedge Trans(B)\Rightarrow \cup A\subseteq B$ to deduce $\cup^{k+1}\subseteq t$. So it follows $TC(x)\subset t$. But $t$ was arbitrary.
+        \item[iii)] $x\subseteq TC(x)$, if $Trans(x)$ then substitude $x$ for $t$ in the above, concluding $TC(x)\subseteq x$.
+    \end{itemize}
+\end{proof}
 
+\section{Number Systems}
+\subsection*{Definition 2.1}
+A set $Y$ is called inductive if $\emptyset \in Y$ and $\forall x\in Y (S(x)\in Y)$.
+\textit{Axiom of Infinity: There exists an inductive set, $\exists Y(\emptyset\in Y \wedge \forall x\in Y (S(x)\in Y))$.}
+\subsection*{Definition 2.2}
+\begin{itemize}
+    \item[i)] $x$ is a natural number if $\forall Y[Y\text{ is an inductive set}\to x\in Y]$.
+    \item[ii)] $\omega$ is the class of natural numbers.
+\end{itemize}
+\textit{NB: $\omega=\cap\{Y|Y\text{ an inductive set}\}$}
+\subsection*{Proposition 2.3}
+$\omega$ is a set.
+\begin{proof}
+    Let $z$ be any inductive set. By the Axiom of subsets: there is a set $N$ so that:
+    $$N=\{x\in z|\forall Y[Y \text{ an inductive set}\to x\in Y] $$
+\end{proof}
+\subsection*{Proposition 2.4}
+\begin{itemize}
+    \item[i)] $\omega$ is an inductive set.
+    \item[ii)] It is the smallest inductive set.
+\end{itemize}
+\begin{proof}
+    We have proven $\omega$ is a set. To show inductivity, not by definition $\emptyset$ is in any inductive set $Y$ so $\emptyset\in\omega$. Moreover, if $x\in\omega$, then for any inductive set $Y$, we have both $x,S(x)\in Y$. Hence $S(x)\in\omega$. So $\omega$ closed under the $S$ function. (ii) then follows.
+\end{proof}
+\subsection*{Theorem 2.5 (Principle of Mathematical Induction)}
+Suppose $\Phi$ is a welldefined definite propery of sets. Then
+$$[\Phi(0)\wedge\forall x\in\omega(\Phi(x)\to\Phi(S(x)))\to\forall x\in \omega\quad\Phi(x)] $$
+\begin{proof}
+    Assume the entecedent here, then it suffices to show that the set of $x\in\omega$ for which $\Phi(x)$ holds is inductive. Let $Y=\{x\in\omega|\Phi(x)\}$. However the antecedent then says $0\in Y$; and moreover if $x\in Y$ then $S(x)\in Y$. That $Y$ is inductive is then simply the antededent assumption. Hence $\omega\subseteq Y$. And so $\omega = Y$.
+\end{proof}
+\subsection*{Proposition 2.6}
+Every natural number $y$ is either $0$ or is $S(x)$ for some natural number $x$.
+\begin{proof}
+    Let $Z=\{y\in\omega|y=0\vee\exists x\in\omega(S(x)=y)\}$. Then $0\in Z$ and if $u\in Z$, then $u\in \omega$. Hence $S(u)\in\omega$ as $\omega$ inductive. Hence $S(u)\in Z$, so $Z$ is inductive and thus $\omega$.
+\end{proof}
+\subsection*{Exercise 2.1}
+Every natural number is transitive
+\begin{proof}
+    Wts $Z=\{x\in\omega|Trans(x)\}$ is inductive.
+\end{proof}
+\subsection*{Lemma 2.7}
+$\omega$ is transiative.
+\begin{proof}
+    Let $X=\{n\in\omega|n\subseteq\omega\}$. If $X$ were inductive, then $X\subseteq\omega\subseteq X$, and then $Trans(\omega)$. Trivially $\emptyset\in X$. Assume $n\in X$, then $n\subseteq \omega$ and $\{n\}\subseteq\omega$. Hence $S(n)\in X$. So $X$ is inductive.
+\end{proof}
+\subsection*{Definition 2.10}
+For $m,n\in\omega$ set $m<n\iff m\in n$. Set $m\leq n \iff m=n\vee m<n$
+\subsection*{Lemma 2.11}
+\begin{itemize}
+    \item[i)] $<, \leq$ are transitive.
+    \item[ii)] $\forall n\in\omega \forall m(m<n\iff S(m)<S(n))$.
+    \item[iii)] $\forall m\in\omega(m\not<m)$.
+\end{itemize}
+\begin{proof}
+    \begin{itemize}
+        \item[i)] That $<$ is transitive comes from the fact our natural numbers are proven to be transitive sets: $n\in m\in k\Rightarrow n\in k$. The same follows for $\leq$.
 
-
+        \item[ii)]
+        \item[iii)]
+    \end{itemize}
+\end{proof}
 
 \end{document}
