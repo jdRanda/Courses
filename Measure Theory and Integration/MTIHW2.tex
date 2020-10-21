@@ -35,13 +35,19 @@ Let $X$ be a set of at least two elements. Set $\mathbb{X}=\{\emptyset,X\}$. The
     $$|f_{n}(x)-f(x)|=|\frac{1}{n}-0|=\frac{1}{n}\leq\frac{1}{N}<\epsilon$$
     Case 2 for $x\not\in[0,n]$
     $$|f_{n}(x)-f(x)|=0<\epsilon $$
-    Now want to show $\int fdm\neq \lim\int f_{n}dm$\\
-    We know trivially that $\int fdm=0$ as $f$ is the zero function.
-
-
-    \\This does not contradict the Monotone Convergence Theorem as $(f_{n})$ is not monotone non-decreasing.
+    Now want to show $\int fdm\neq \lim\int f_{n}dm$.\\
+    We know trivially that $\int fdm=0$ as $f$ is the zero function. So Now
+    $$\lim_{n}\int f_{n}dm=\lim_{n}\frac{1}{n}m([0,n])=\lim_{n}\frac{n}{n}=1 $$
+    So we have that
+    $$ \int fdm=0\neq 1=\lim_{n}\int f_{n}dm$$
+    Fatous lemma is applicable here but, this does not contradict the Monotone Convergence Theorem as $(f_{n})$ is not monotone non-decreasing.
     \item[b)]
-
+     Want to show $\int gdm\neq \lim\int g_{n}dm$.\\
+     We know trivially that $\int gdm=0$ as $g$ is the zero function. So Now
+     $$\lim_{n}\int g_{n}dm=\lim_{n}nm([\frac{1}{n},\frac{2}{n}])=n(\frac{2}{n}-\frac{1}{n})=1 $$
+     So we have that
+     $$ \int gdm=0\neq 1=\lim_{n}\int g_{n}dm$$
+     $(g_{n})$ converges uniform to $g$, Fatous lemma is applicable here, and $(g_{n})$ is monotone increasing so MCT applies also.
 \end{itemize}
 
 \end{document}
