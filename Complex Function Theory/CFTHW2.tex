@@ -15,9 +15,22 @@ Joseph Dowling.
 
 
 \subsection*{Exercise 3}
-
+We have that $(fg)'=fg'+f'g$ so $\int_{\gamma}(fg)'=\int_{\gamma}fg'+\int_{\gamma}f'g$ and then by the fundamental theorem we have
+$$\int_{\gamma}(fg)'=f(b)g(b)-f(a)g(a) $$
+Combining our two equations we get
+$$\int_{\gamma}fg'+\int_{\gamma}f'g=f(b)g(b)-f(a)g(a) $$
+Then rearanging
+$$\int_{\gamma}fg'=f(b)g(b)-f(a)g(a)-\int_{\gamma}f'g$$
 \subsection*{Exercise 5}
-
+We have $L(\gamma)=\int_{0}^{2\pi}|\gamma'(t)|dt=\int_{0}^{2\pi}|ie^{it}|dt=2\pi $. And we also have
+\begin{align*}
+    \sup_{t}|\frac{\sin(\gamma(t))}{\gamma(t)^{2}}| &= \sup_{t} |\frac{e^{i\gamma(t)}-e^{-i\gamma(t)}}{2i\gamma(t)^{2}}| \\
+    & = \sup_{t} \frac{|e^{i\gamma(t)}-e^{-i\gamma(t)}|}{|2i\gamma(t)^{2}|}\\
+    & \leq \sup_{t} \frac{|e^{i\gamma(t)}|+|e^{-i\gamma(t)}|}{|2i\gamma(t)^{2}|}\\
+    &= \sup_{t} \frac{1}{|\gamma(t)|^{2}} = 1?
+\end{align*}
+Then by the estimation lemma we get
+$$|\int_{\gamma}\frac{\sin(z)}{z^{2}}dz|\leq 2\pi e $$
 \subsection*{Exercise 6)}
 \begin{itemize}
     \item[b)]
