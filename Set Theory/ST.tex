@@ -1,3 +1,4 @@
+
 \documentclass[a4paper, 12pt, twoside]{article}
 \usepackage[left = 3cm, right = 3cm]{geometry}
 \usepackage[english]{babel}
@@ -226,7 +227,7 @@ $\omega$ is a set.
 Suppose $\Phi$ is a welldefined definite propery of sets. Then
 $$[\Phi(0)\wedge\forall x\in\omega(\Phi(x)\to\Phi(S(x)))\to\forall x\in \omega\quad\Phi(x)] $$
 \begin{proof}
-    Assume the entecedent here, then it suffices to show that the set of $x\in\omega$ for which $\Phi(x)$ holds is inductive. Let $Y=\{x\in\omega|\Phi(x)\}$. However the antecedent then says $0\in Y$; and moreover if $x\in Y$ then $S(x)\in Y$. That $Y$ is inductive is then simply the antededent assumption. Hence $\omega\subseteq Y$. And so $\omega = Y$.
+    Assume the antecedent here, then it suffices to show that the set of $x\in\omega$ for which $\Phi(x)$ holds is inductive. Let $Y=\{x\in\omega|\Phi(x)\}$. However the antecedent then says $0\in Y$; and moreover if $x\in Y$ then $S(x)\in Y$. That $Y$ is inductive is then simply the antededent assumption. Hence $\omega\subseteq Y$. And so $\omega = Y$.
 \end{proof}
 \subsection*{Proposition 2.6}
 Every natural number $y$ is either $0$ or is $S(x)$ for some natural number $x$.
@@ -254,10 +255,49 @@ For $m,n\in\omega$ set $m<n\iff m\in n$. Set $m\leq n \iff m=n\vee m<n$
 \begin{proof}
     \begin{itemize}
         \item[i)] That $<$ is transitive comes from the fact our natural numbers are proven to be transitive sets: $n\in m\in k\Rightarrow n\in k$. The same follows for $\leq$.
-
-        \item[ii)]
-        \item[iii)]
+        \item[ii)] $(\leftarrow)$ Assume $S(m)<S(n)$. $m\in S(m)=m\cup\{m\}\in S(n)=n\cup\{n\}$.\\
+        If $S(m)=n$: So $m\in n$. So $m<n$.\\
+        If $S(m)\in n$: Then $Trans(n)$, we have $m\in S(m)\subseteq n$. So again $m\in n$, and $m<n$.\\
+        $(\rightarrow)$ We wts by PMI. Let $\Phi(k)$ say: "$\forall m(m<k\Rightarrow S(m)<S(k))$". Then $\Phi(0)$ vacuously holds; and so we suppose $\Phi(k)$ and prove $\Phi(k+1)$.\\
+        Then let $m<S(k)$. Then $m\in k\cup\{k\}$. If $m\in k$, then by $\Phi(k)$ we have $S(m)<S(k)<S(S(k))$. If $m=k$ then $S(m)=S(k)<S(S(k))$. So we have $\Phi(S(k))$. So by PMI, $\forall k, \Phi(k)$.
+        \item[iii)] Note $0\not<0$ since $0\not\in 0$. If $k\not\in k$ then $S(k)\not\in S(k)$ by (ii). So $X=\{k\in \omega|k\not\in k\}$ is inductive, i.e. all of $\omega$.
     \end{itemize}
 \end{proof}
+\subsection*{Lemma 2.12}
+$<$ is a strict total ordering.
+\begin{proof}
+    All we have to left to prove is connectivity. $\forall m,n\in\omega(m=n\vee m<n \vee n<m)$. Note that at most one may hold for $m,n$. Let $X=\{n/in/omega|\forall m\in\omega(m=n\vee m<n \vee n<m)\}$. If X is inductive the proof is compelte. Exercise to show.
+\end{proof}
+\subsection*{Theorem 2.13 \emph{Wellordering Theorem for $\omega$}}
+Let $X\subseteq\omega$. Then either  $X=\emptyset$ or there is $n_{0}\in X$ so that for any $m\in X$ either $n_{0}=m \vee n_{0}<(\in) m$.\\
+\textit{Least Number Principle: any non-empty set of natural numbers has a least element.}
+\begin{proof}
+    Suppose $X\subseteq\omega$ but $X$ has no least elements as above. Let
+    $$Z=\{k\in\omega|\forall n\in k(n\not\in X)\} $$
+    We claim $Z$ inductive, hence all of $\omega$ and so $X=\emptyset$. Vacuously $0\in Z$. Suppose now $k\in Z$. Let $n<S(k)$. Hence $n\in k\cup\{k\}$. If $n\in k$ then $n\not\in X$ (as $n<k\wedge k\in Z$). But if $n=k$, and so $n\not\in X$, as otherwise it would be hte least element of $X$ and $X$ has no such element. So $S(k)\in Z$. Hence $Z$ is inductive.
+\end{proof}
+\subsection*{Theorem 2.14 \emph{Recursion Theorem on $\omega$}}
+Let  $A$ be any set, $a\in A$, $f:A\to A$, any function. Then there exists a unique function $h\omega\to A$ so that
+\begin{itemize}
+    \item $h(0)=a$.
+    \item For any $n\in\omega$: $h(S(n))=f(h(n))$.
+\end{itemize}
+\begin{proof}
+long af
+\end{proof}
+\subsection*{Example 2.15 \emph{Addition}}
+Let $n\in\omega$. We can define an "add n" function $A_{n}(x)$ as follows:
+\begin{itemize}
+    \item $A_{n}(0)=n$.
+    \item $A_{n}(S(k))=S(A_{n}(k))$.
+\end{itemize}
+From now on we refer to $S(n)$ as $n+1$. And we write $A_{n}(k)$ as $n+k$
+\subsection*{Example 2.16 \emph{Multiplication}}
+\begin{itemize}
+    \item[i)] $M_{n}(x)$: $M_{n}(0)=0; M_{n}(k+1)=M_{n}(k)+n$.
+    \item[ii)] $E_{n}(x)$: $E_{n}(0)=1; E_{n}(k+1)=E_{n}(k)\cdot n$
+\end{itemize}
+We write $M_{n}(k)$ as $n\cdot k$, and $E_{n}(x)$ as $n^{k}$.
+
 
 \end{document}

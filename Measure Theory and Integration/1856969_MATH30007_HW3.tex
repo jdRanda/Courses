@@ -1,0 +1,35 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{Joseph}
+
+\begin{document}
+
+Joseph Dowling.
+\subsection*{Exercise 1}
+\subsection*{Exercise 4}
+Let $\epsilon>0$. We know by definition $f=f^{+}-f^{-}$, and $\int fd\mu=\sup\{\int sd\mu|o\leq s\leq f,s \text{simple and measurable}\}$. So we have that
+$$\exists \gamma^{+},\gamma^{-} \text{ simple,measurable s.t. } \int|f^{+}-\gamma^{+}|d\mu<\epsilon/2, \int|f^{-}-\gamma^{-}|d\mu<\epsilon/2  $$
+Then define $\gamma:=\gamma^{+}-\gamma^{-}$, so that
+\begin{align*}
+    \int|f-\gamma| d\mu&= \int|(f^{+}-\gamma^{+})-(f^{-}-\gamma^{-})|d\mu\\
+    &\leq \int|f^{+}-\gamma^{+}|d\mu+\int|f^{-}-\gamma^{-})|d\mu\\
+    & < \epsilon/2 + \epsilon/2 = \epsilon
+\end{align*}
+\subsection*{Exercise 6}
+We know for fixed $\epsilon>0$, we can choose $N$ s.t. for $n\geq N$, $\sup_{x\in \Omega}|f_{n}(x)-f(x)|<\epsilon/\mu(\Omega)$. So then
+$$\int f_{n}d\mu\leq \int(f+\epsilon/\mu(\Omega))d\mu, \int fd\mu\leq \int(f_{n}+\epsilon/\mu(\Omega))d\mu $$
+then since we have that $\int\epsilon/\mu(\Omega)d\mu=\epsilon$,
+$$\int f_{n}d\mu-\int fd\mu\leq \epsilon, \int fd\mu-\int f_{n}d\mu\leq \epsilon$$
+Thus we get
+$$ \int |f_{n}- f|d\mu\leq \epsilon$$
+Hence
+$$\int fd\mu=\lim_{n}\int f_{n}d\mu$$
+\textit{In the case when $\mu(\Omega)=\infty$ we cannot take our $\epsilon$ over $\mu(\Omega)$, so the equality may fail.}
+\end{document}

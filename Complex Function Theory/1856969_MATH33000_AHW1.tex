@@ -1,0 +1,43 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[left = 3cm, right = 3cm]{geometry}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol}
+
+\author{Joseph}
+
+\begin{document}
+Joseph Dowling.
+\subsection*{Exercise 1}
+\begin{itemize}
+    \item[I)] $log(z-1)$: Has a branch cut of $[1,\infty)$.
+    \item[II)] $log(z+2)$: Has a branch cut of $[-2,\infty)$.
+    \item[III)] $log[(z-1)(z+2)]$: Has one branch cut at $[-2,1]$.
+\end{itemize}
+\subsection*{Exercise 2}
+\begin{itemize}
+    \item[I)] $D=\{z\in \mathbb{C}|Im(z)>0\}$: Has an antiderivative of $F:=Log(z)$, differentiable in D, (as $D\subseteq  \mathbb{C}\backslash[0,+\infty)$), as defined in the notes.
+    \item[II)] $D=A_{r,R}(0)$: $f$ has no antiderivative as we know $\int_{S_{p}^{+}(0)}1/z=2\pi i\neq0, \forall p$.
+    \item[III)] $D= \mathbb{C}\backslash[0,+\infty)$: Has an antiderivative of $F:=Log(z)$, differentiable in D as defined in the notes.
+\end{itemize}
+\subsection*{Exercise 3}
+\begin{itemize}
+    \item[I)] Let $f(z)=1,\forall z$, suppose $|a|< r$. Then we have by cauchys integral formula
+    $$\int_{S^{+}_{r}(0)}\frac{f(z)}{z-a}dz=f(z)2\pi i=2\pi i $$
+    For $|a|=r$, then we can find some $R>r$ such that $S^{+}_{r}(0)\sim S^{+}_{R}(0) $, then by the deformation theorem and above
+    $$ \int_{S^{+}_{r}(0)}\frac{1}{z-a}dz=\int_{S^{+}_{R}(0)}\frac{1}{z-a}dz=2\pi i$$
+    For  $|a|>r$ Then $\int_{S^{+}_{r}(0)}\frac{1}{z-a}dz=0$ by cauchys theorem. As $S^{+}_{r}(0)$ is simply connected and f is differentiable in $S^{+}_{r}(0)$.
+    \item[II)] Let $f(z)=\sin(z)/(z+2)$, $f$ holomorphic for $\mathbb{C}\backslash\{-2\}$. So by cauchys integral formula
+    $$\int_{S^{+}_{1}(0)}\frac{f(z)}{z-0}dz=2\pi if(0)=0 $$
+\end{itemize}
+\subsection*{Exercise 4}
+We know from the definition of the homotopy map, $\gamma_{0}\sim\gamma_{1}\sim\gamma_{s} \forall s\in[0,1]$. So for any $s\in[0,1]$, we have that, by the deformation theorem, $\int_{\gamma_{s}}f= \int_{\gamma_{0}}f= \int_{\gamma_{1}}f=c$ for some constant $c\in \mathbb{C}$. Then,
+$$\frac{d}{ds}I(s)=\frac{d}{ds}c=0 $$
+
+
+
+
+\end{document}
